@@ -3,11 +3,14 @@ package math.algorithms
 @FunctionalInterface
 abstract class Algorithm<Parameter, Result> extends Observable implements Runnable {
 
-    private Parameter parameter
     private Result result
-    AlgorithmsFeedback status
 
     abstract Algorithm(Parameter parameter)
+
+    protected def update(AlgorithmsFeedback status) {
+        setChanged()
+        notifyObservers(status)
+    }
 
     /**
      *  Returns current (sic!) algorithm's result <br>
