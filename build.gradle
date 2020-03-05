@@ -1,6 +1,5 @@
 plugins {
     id 'groovy'
-    id 'java'
 }
 
 group 'alexfokin.steinerann'
@@ -17,15 +16,6 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs = ['core/code']
-        }
-    }
-}
-
 wrapper {
     gradleVersion = '5.2.1'
-    distributionUrl = distributionUrl.replace("bin", "all")
 }

@@ -18,8 +18,7 @@ abstract class AbstractEdge<V extends AbstractVertex> extends Identifiable imple
     // TODO: Weight is the Metric of first and second
     abstract double getWeight()
 
-    // TODO: We can implement in-groovy-method
     boolean contains(V vertex) {
-        first.equals(vertex) || second.equals(vertex)
+        first == vertex || second == vertex
     }
 }

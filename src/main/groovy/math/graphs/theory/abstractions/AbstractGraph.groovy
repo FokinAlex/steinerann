@@ -18,7 +18,7 @@ abstract class AbstractGraph<V extends AbstractVertex, E extends AbstractEdge<V>
         this.metricSpace = metricSpace
     }
 
-    protected boolean addVertex() {
+    protected boolean addVertex(V vertex) {
         vertexes.add(vertex)
     }
 
