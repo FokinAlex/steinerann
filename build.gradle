@@ -19,3 +19,7 @@ dependencies {
 wrapper {
     gradleVersion = '5.2.1'
 }
+
+task logDirInit {
+    new File("logs").mkdir()
+}
