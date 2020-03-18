@@ -9,9 +9,9 @@ enum LogFacade {
     WARN(WARN_PREFIX),
     ERROR(ERROR_PREFIX);
     
-    private final static String INFO_PREFIX  = "INFO  "
-    private final static String WARN_PREFIX  = "WARN  "
-    private final static String ERROR_PREFIX = "ERROR "
+    private final static String INFO_PREFIX  = "INFO:  "
+    private final static String WARN_PREFIX  = "WARN:  "
+    private final static String ERROR_PREFIX = "ERROR: "
 
     private  final String prefix
     
@@ -20,12 +20,12 @@ enum LogFacade {
     }
     
     def call(String message) {
-        OutPrintStreamLogger.call(message)
+        OutPrintStreamLogger.call("${prefix}${message}")
     }
     
     def call(String message, Exception exception) {
-        OutPrintStreamLogger.call(message)
-        ExceptionsLogger.call(message)
+        OutPrintStreamLogger.call("${prefix}${message}")
+        ExceptionsLogger.call("${prefix}${message}")
         StackTraceLogger.call(exception)
     }
 }
