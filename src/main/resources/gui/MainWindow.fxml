@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXController">
+    <children>
+        <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
+            <menus>
+                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File" />
+                <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit" />
+                <Menu fx:id="projectMenu" mnemonicParsing="false" text="Project" />
+                <Menu fx:id="pageMenu" mnemonicParsing="false" text="Page" />
+                <Menu fx:id="algorithmsMenu" mnemonicParsing="false" text="Algorithms" />
+            </menus>
+        </MenuBar>
+
+        <BorderPane fx:id="mainPane" prefWidth="200.0"/>
+    </children>
+</VBox>

@@ -1,5 +1,6 @@
 plugins {
     id 'groovy'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
 group 'alexfokin.steinerann'
@@ -9,6 +10,10 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
 dependencies {
