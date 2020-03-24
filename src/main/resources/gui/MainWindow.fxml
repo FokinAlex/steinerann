@@ -2,14 +2,25 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import gui.fxml.components.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXController">
+<?import gui.fxml.components.ProjectPane?>
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.fxml.MainWindowController">
+
     <children>
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
             <menus>
-                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File" />
+                <Menu fx:id="gui_FileMenuActions__fileMenu" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="gui_fxml_FileMenu__fileNewProjectMenuItem" mnemonicParsing="false" onAction="#newProject" text="New Project" />
+                    </items>
+                </Menu>
                 <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit" />
-                <Menu fx:id="projectMenu" mnemonicParsing="false" text="Project" />
+                <Menu fx:id="projectMenu" mnemonicParsing="false" text="Project">
+                    <items>
+                        <MenuItem fx:id="gui_fxml_ProjectMenu__projectNewPageMenuItem" mnemonicParsing="false" onAction="#newPage" text="New Page" />
+                    </items>
+                </Menu>
                 <Menu fx:id="pageMenu" mnemonicParsing="false" text="Page" />
                 <Menu fx:id="algorithmsMenu" mnemonicParsing="false" text="Algorithms" />
             </menus>

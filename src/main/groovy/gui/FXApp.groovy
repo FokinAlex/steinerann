@@ -8,22 +8,16 @@ import javafx.stage.Stage
 
 final class FXApp extends Application {
 
-    private static final String MW_FXML = "MainWindow.fxml"
-
-    private FXController controller
     private Parent rootElement
-    private Scene scene
 
     @Override
     void start(Stage stage) {
         final FXMLLoader loader = new FXMLLoader()
-        final InputStream stream = getClass().getResourceAsStream(MW_FXML)
-
+        final InputStream stream = getClass().getResourceAsStream(Context.MW_FXML)
         this.rootElement = loader.load(stream)
-        this.controller = loader.getController()
-        this.scene = new Scene(rootElement, 800, 600)
-
-        stage.setScene(this.scene)
+        stream.close()
+        Context.MAINWINDOW_CONTROLLER = loader.getController()
+        stage.setScene(new Scene(rootElement, 800, 600))
         stage.show()
     }
 

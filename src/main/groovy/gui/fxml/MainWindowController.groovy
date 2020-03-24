@@ -1,27 +1,23 @@
-package gui
+package gui.fxml
 
 import javafx.fxml.FXML
 import javafx.scene.control.Menu
 import javafx.scene.control.MenuBar
 import javafx.scene.layout.BorderPane
 
-class FXController {
+final class MainWindowController implements FileMenu, ProjectMenu {
 
     // MenuBar:
-    @FXML private MenuBar menuBar
+    @FXML MenuBar menuBar
 
-    @FXML private Menu fileMenu
+    @FXML Menu editMenu
 
-    @FXML private Menu editMenu
+    @FXML Menu pageMenu
 
-    @FXML private Menu projectMenu
-
-    @FXML private Menu pageMenu
-
-    @FXML private Menu algorithmsMenu
+    @FXML Menu algorithmsMenu
 
     // Panes:
-    @FXML private BorderPane mainPane
+    @FXML BorderPane mainPane
 
     // Initialization:
     @FXML
