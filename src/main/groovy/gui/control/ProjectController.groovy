@@ -1,23 +1,27 @@
 package gui.control
 
+import api.enities.Project
+import api.enities.pages.GraphPage
+import api.enities.pages.Page
 import gui.Context
-import gui.enities.Project
-import gui.enities.pages.GraphPage
-import gui.enities.pages.Page
-import gui.fxml.components.PageTab
 import gui.fxml.components.ProjectPane
+import gui.fxml.components.tabs.AbstractTab
+import gui.fxml.components.tabs.GraphTab
+import gui.fxml.components.tabs.ProjectTab
 
 final class ProjectController {
 
     static Project project
     static ProjectPane projectPane
-    static Map<Page, PageTab> pages = new HashMap<>()
 
     static def newProject(String name) {
         projectPane = new ProjectPane()
         project = new Project(name)
-        newPage(project.projectPage, new PageTab(project.projectPage.name.value))
+        newPage(new ProjectTab<>(name, project.projectPage))
         Context.MAINWINDOW_CONTROLLER.mainPane.setCenter(projectPane)
+
+        // TODO: replace
+        Context.MAINWINDOW_CONTROLLER.newGraphPage()
     }
 
     static def renameProject(String name) {
@@ -27,20 +31,19 @@ final class ProjectController {
     static def closeProject() {
         project = null
         projectPane = null
-        pages.clear()
+        // TODO: Clear pane
+        // pages.clear()
     }
 
     // TODO: move to PageController?
     static def newGraphPage(String name) {
         Page page = new GraphPage(name)
-        PageTab pageTab = new PageTab(name)
-        newPage(page, pageTab)
+        GraphTab graphPageTab = new GraphTab(name, page)
+        newPage(graphPageTab)
     }
 
-    private static def newPage(Page page, PageTab pageTab) {
-        project + page
+    private static def newPage(AbstractTab pageTab) {
         projectPane + pageTab
-        pageTab.setContent(page.getContent())
-        pages.put(page, pageTab)
+        project + pageTab.page
     }
 }

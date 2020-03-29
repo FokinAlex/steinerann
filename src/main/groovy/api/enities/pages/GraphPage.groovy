@@ -1,17 +1,20 @@
-package gui.enities.pages
+package api.enities.pages
 
+import gui.fxml.components.GraphPane
 import javafx.scene.Node
-import javafx.scene.layout.Pane
 
 class GraphPage extends Page {
 
+    // TODO: Graph here
+    GraphPane content
+
     GraphPage(String name) {
         super(name)
+        content = new GraphPane()
     }
 
     @Override
     Node getContent() {
-        // Create new component in fxml.components
-        new Pane()
+        content
     }
 }

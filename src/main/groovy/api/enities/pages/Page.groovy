@@ -1,4 +1,4 @@
-package gui.enities.pages
+package api.enities.pages
 
 import javafx.beans.property.SimpleStringProperty
 import javafx.scene.Node

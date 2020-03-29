@@ -1,7 +1,7 @@
-package gui.enities
+package api.enities
 
-import gui.enities.pages.Page
-import gui.enities.pages.ProjectPage
+import api.enities.pages.Page
+import api.enities.pages.ProjectPage
 import javafx.beans.property.SimpleStringProperty
 
 final class Project {
@@ -18,6 +18,7 @@ final class Project {
         this.name = new SimpleStringProperty(name)
         this.pages = pages
         this.projectPage = new ProjectPage(name)
+        this.projectPage.getName().bind(this.name)
     }
 
     def plus(Page page) {

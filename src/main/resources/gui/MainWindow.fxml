@@ -2,9 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import gui.fxml.components.*?>
 
-<?import gui.fxml.components.ProjectPane?>
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.fxml.MainWindowController">
 
     <children>
@@ -13,12 +11,20 @@
                 <Menu fx:id="gui_FileMenuActions__fileMenu" mnemonicParsing="false" text="File">
                     <items>
                         <MenuItem fx:id="gui_fxml_FileMenu__fileNewProjectMenuItem" mnemonicParsing="false" onAction="#newProject" text="New Project" />
+                        <MenuItem fx:id="gui_fxml_FileMenu__fileCloseProjectMenuItem" mnemonicParsing="false" onAction="#closeProject" text="Close Project" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                     </items>
                 </Menu>
                 <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit" />
                 <Menu fx:id="projectMenu" mnemonicParsing="false" text="Project">
                     <items>
-                        <MenuItem fx:id="gui_fxml_ProjectMenu__projectNewPageMenuItem" mnemonicParsing="false" onAction="#newPage" text="New Page" />
+                  <Menu mnemonicParsing="false" text="New">
+                    <items>
+                              <MenuItem fx:id="gui_fxml_ProjectMenu__projectNewGraphPageMenuItem" mnemonicParsing="false" onAction="#newGraphPage" text="Graph Page" />
+                    </items>
+                  </Menu>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="gui_fxml_ProjectMenu__projectRenameProjectMenuItem" mnemonicParsing="false" onAction="#renameProject" text="Rename Project" />
                     </items>
                 </Menu>
                 <Menu fx:id="pageMenu" mnemonicParsing="false" text="Page" />
@@ -26,6 +32,6 @@
             </menus>
         </MenuBar>
 
-        <BorderPane fx:id="mainPane" prefWidth="200.0"/>
+        <BorderPane fx:id="mainPane" prefWidth="200.0" />
     </children>
 </VBox>
