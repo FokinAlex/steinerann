@@ -9,7 +9,7 @@ class Identifiable {
     }
 
     @Override
-    final boolean equals(Object obj) {
+    boolean equals(Object obj) {
         obj instanceof Identifiable && this.id == obj.id
     }
 
