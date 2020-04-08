@@ -1,0 +1,40 @@
+package math.metricspaces
+
+import math.utils.MathUtils
+
+enum MetricSpace {
+    EUCLIDEAN (EUCLIDEAN_METRIC) {
+
+        @Override
+        <Param> Point point(Param... params) {
+            if (params.length != COUNT_OF_EUCLIDEAN_POINT_PARAMS) {
+                // TODO:
+                throw new IllegalArgumentException("It must be pair (x, y) to initialize point in Euclidean space")
+            }
+            if (!(params[0] instanceof Double && params[1] instanceof Double)) {
+                // TODO:
+                throw new IllegalArgumentException("Values of pair (x, y) must be instance of double")
+            }
+            new EuclideanPoint(params[0] as Double, params[1] as Double)
+        }
+    };
+
+    private static final int COUNT_OF_EUCLIDEAN_POINT_PARAMS = 2
+
+    private static def EUCLIDEAN_METRIC = { first, second ->
+        if (first instanceof EuclideanPoint && second instanceof EuclideanPoint) {
+            // TODO: get root
+            MathUtils.square(first.x - second.x) + MathUtils.square(first.y - second.y)
+        } else {
+            throw new IllegalArgumentException("Not euclidean point in Euclidean space")
+        }
+    }
+
+    final Closure metric
+
+    MetricSpace(Closure metric) {
+        this.metric = metric
+    }
+
+    abstract <Param> Point point(Param... params)
+}
