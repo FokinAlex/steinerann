@@ -2,15 +2,26 @@ package api.enities.pages
 
 import gui.fxml.components.GraphPane
 import javafx.scene.Node
+import math.graphs.theory.abstractions.AbstractGraph
+import math.graphs.theory.abstractions.AbstractVertex
 
-class GraphPage extends Page {
+class GraphPage<Graph extends AbstractGraph> extends Page {
 
-    // TODO: Graph here
-    GraphPane content
+    final Graph graph
+    final GraphPane content
 
-    GraphPage(String name) {
+    GraphPage(String name, Graph graph) {
         super(name)
-        content = new GraphPane()
+        this.graph = graph
+        this.content = initContent()
+    }
+
+    private GraphPane initContent() {
+        GraphPane pane = new GraphPane()
+        graph.getVertexes().each {
+            pane.newVertex(it as AbstractVertex)
+        }
+        pane
     }
 
     @Override

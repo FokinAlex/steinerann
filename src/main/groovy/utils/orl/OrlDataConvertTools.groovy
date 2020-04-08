@@ -1,18 +1,17 @@
 package utils.orl
 
+import api.ProjectFiles
 import log.LogFacade
 
 class OrlDataConvertTools {
 
-    private static final String ORL_RAW_DIRECTORY = "src/main/resources/orl/raw"
-    private static final String ORL_DIRECTORY = "src/main/resources/orl"
     private static final def NUMBERS = [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
     static void main(String[] args) {
         Map<File, File> files = new HashMap<>()
         for (number in NUMBERS) {
-            File rawCaseFile = new File(ORL_RAW_DIRECTORY, "estein${number}.txt")
-            File rawResultFile = new File(ORL_RAW_DIRECTORY, "estein${number}opt.txt")
+            File rawCaseFile = new File(ProjectFiles.ORL_RAW_DIRECTORY, "estein${number}.txt")
+            File rawResultFile = new File(ProjectFiles.ORL_RAW_DIRECTORY, "estein${number}opt.txt")
             files.put(rawCaseFile, rawResultFile)
         }
 
@@ -23,7 +22,7 @@ class OrlDataConvertTools {
             int counter = 1
             for (c in orlCases) {
                 if (c.points.size() == i) {
-                    File file = new File(ORL_DIRECTORY, "${i}-${counter++}.orl")
+                    File file = new File(ProjectFiles.ORL_CASES_DIRECTORY, "${i}-${counter++}.orl")
                     c.writeToFile(file)
                     LogFacade.INFO "[v] ${file}"
                 }

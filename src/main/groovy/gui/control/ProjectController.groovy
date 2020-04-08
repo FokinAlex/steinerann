@@ -2,11 +2,13 @@ package gui.control
 
 import api.enities.Project
 import api.enities.pages.GraphPage
+import api.enities.pages.OrlCasePage
 import api.enities.pages.Page
 import gui.Context
 import gui.fxml.components.ProjectPane
 import gui.fxml.components.tabs.AbstractTab
 import gui.fxml.components.tabs.GraphTab
+import gui.fxml.components.tabs.OrlCaseTab
 import gui.fxml.components.tabs.ProjectTab
 
 final class ProjectController {
@@ -17,11 +19,8 @@ final class ProjectController {
     static def newProject(String name) {
         projectPane = new ProjectPane()
         project = new Project(name)
-        newPage(new ProjectTab<>(name, project.projectPage))
+        // addNewPage(new ProjectTab<>(name, project.projectPage))
         Context.MAINWINDOW_CONTROLLER.mainPane.setCenter(projectPane)
-
-        // TODO: replace
-        Context.MAINWINDOW_CONTROLLER.newGraphPage()
     }
 
     static def renameProject(String name) {
@@ -35,14 +34,19 @@ final class ProjectController {
         // pages.clear()
     }
 
+    static def newPage(OrlCasePage page) {
+        OrlCaseTab tab = new OrlCaseTab(page.getName().value, page)
+        addNewPage(tab)
+    }
+
     // TODO: move to PageController?
     static def newGraphPage(String name) {
         Page page = new GraphPage(name)
         GraphTab graphPageTab = new GraphTab(name, page)
-        newPage(graphPageTab)
+        addNewPage(graphPageTab)
     }
 
-    private static def newPage(AbstractTab pageTab) {
+    private static def addNewPage(AbstractTab pageTab) {
         projectPane + pageTab
         project + pageTab.page
     }

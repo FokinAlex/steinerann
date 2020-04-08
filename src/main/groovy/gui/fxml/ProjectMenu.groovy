@@ -10,6 +10,7 @@ trait ProjectMenu {
     @FXML private Menu     projectMenu
     @FXML private MenuItem projectNewGraphPageMenuItem
     @FXML private MenuItem projectRenameProjectMenuItem
+    @FXML private Menu     projectNewOrlCaseMenu
 
     @FXML
     def newGraphPage() {
