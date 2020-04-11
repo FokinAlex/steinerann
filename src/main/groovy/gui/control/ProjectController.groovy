@@ -41,9 +41,9 @@ final class ProjectController {
 
     // TODO: move to PageController?
     static def newGraphPage(String name) {
-        Page page = new GraphPage(name)
-        GraphTab graphPageTab = new GraphTab(name, page)
-        addNewPage(graphPageTab)
+        // Page page = new GraphPage(name)
+        // GraphTab graphPageTab = new GraphTab(name, page)
+        // addNewPage(graphPageTab)
     }
 
     private static def addNewPage(AbstractTab pageTab) {

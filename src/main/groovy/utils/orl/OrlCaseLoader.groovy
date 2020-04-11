@@ -1,7 +1,6 @@
 package utils.orl
 
 import api.ProjectFiles
-import identification.Sequence
 import math.graphs.VertexType
 import math.graphs.euclidean.EuclideanGraph
 import math.graphs.euclidean.EuclideanVertex
@@ -10,16 +9,16 @@ import utils.others.Duo
 
 final class OrlCaseLoader {
 
-    private static final Map<String, List<Duo<String, File>>> GROUPED_CASES = new LinkedHashMap<>()
+    private static final Map<Integer, List<Duo<String, File>>> GROUPED_CASES = new LinkedHashMap<>()
     private static final Map<String, File> CASES = new HashMap<>()
 
     static {
         findCases(new File(ProjectFiles.ORL_CASES_DIRECTORY))
     }
 
-    static List<Duo<String, List<String>>> getCases() {
-        List<Duo<String, List<String>>> result = new LinkedList<>()
-        GROUPED_CASES.each { entry ->
+    static List<Duo<Integer, List<String>>> getCases() {
+        List<Duo<Integer, List<String>>> result = new LinkedList<>()
+        GROUPED_CASES.sort { it.key }.each { entry ->
             result.add(
                 new Duo(
                     a: entry.key,
@@ -33,15 +32,17 @@ final class OrlCaseLoader {
     static void findCases(File casesDirectory) {
         if (casesDirectory.isDirectory()) {
             Map<String, List<Duo<String, File>>> cases = new LinkedHashMap<>()
-            // TODO: sort
             casesDirectory.eachFile { groupDirectory ->
                 List<Duo<String, File>> group = new LinkedList<>()
                 groupDirectory.eachFile {
                     group.add(new Duo(a: it.getName(), b: it))
                     CASES.put(it.getName(), it)
                 }
-                GROUPED_CASES.put(groupDirectory.getName(), group)
+                GROUPED_CASES.put(Integer.valueOf(groupDirectory.getName()), group)
             }
+        }
+        GROUPED_CASES.each { group ->
+            group.value.sort { Integer.valueOf(it.a.replaceAll(~'([0-9]+-|[.orl]+)', '')) }
         }
     }
 

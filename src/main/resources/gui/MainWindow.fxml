@@ -27,11 +27,6 @@
                                       text="OR-Library Case"/>
                             </items>
                         </Menu>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem fx:id="gui_fxml_ProjectMenu__projectRenameProjectMenuItem"
-                                  mnemonicParsing="false"
-                                  onAction="#renameProject"
-                                  text="Rename Project"/>
                     </items>
                 </Menu>
                 <Menu fx:id="pageMenu" mnemonicParsing="false" text="Page"/>

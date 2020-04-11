@@ -7,7 +7,7 @@ import utils.others.Duo
 
 class OrlCaseController {
 
-    static List<Duo<String, List<String>>> getCases() {
+    static List<Duo<Integer, List<String>>> getCases() {
         OrlCases.getCases()
     }
 

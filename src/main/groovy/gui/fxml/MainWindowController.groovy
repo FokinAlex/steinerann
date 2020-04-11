@@ -6,6 +6,7 @@ import javafx.scene.control.Menu
 import javafx.scene.control.MenuBar
 import javafx.scene.control.MenuItem
 import javafx.scene.layout.BorderPane
+import utils.others.Duo
 
 final class MainWindowController implements FileMenu, ProjectMenu {
 
@@ -25,7 +26,7 @@ final class MainWindowController implements FileMenu, ProjectMenu {
     @FXML
     void initialize() {
         Context.ORL_CASE_CONTROLLER.getCases().each { group ->
-            Menu menu = new Menu(group.a)
+            Menu menu = new Menu(group.a.toString())
             this.gui_fxml_ProjectMenu__projectNewOrlCaseMenu.getItems().add(menu)
             group.b.each { caseName ->
                 MenuItem item = new MenuItem(caseName)
