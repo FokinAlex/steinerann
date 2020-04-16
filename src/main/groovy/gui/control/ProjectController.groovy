@@ -1,24 +1,40 @@
 package gui.control
 
 import api.enities.Project
-import api.enities.pages.GraphPage
 import api.enities.pages.OrlCasePage
-import api.enities.pages.Page
 import gui.Context
 import gui.fxml.components.ProjectPane
 import gui.fxml.components.tabs.AbstractTab
-import gui.fxml.components.tabs.GraphTab
 import gui.fxml.components.tabs.OrlCaseTab
-import gui.fxml.components.tabs.ProjectTab
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
+import javafx.scene.control.Tab
 
 final class ProjectController {
 
     static Project project
     static ProjectPane projectPane
+    static Tab currentTab
 
     static def newProject(String name) {
         projectPane = new ProjectPane()
         project = new Project(name)
+
+        projectPane.getSelectionModel().selectedItemProperty().addListener(
+                new ChangeListener<Tab>() {
+                    @Override
+                    void changed(ObservableValue<? extends Tab> observableValue, Tab oldTab, Tab newTab) {
+                        currentTab = newTab
+                    }
+                }
+        )
+//        (
+//            { value, oldTab, newTab ->
+//                this.currentTab = newTab
+//            } as ChangeListener<Tab>
+//        )
+
+
         // addNewPage(new ProjectTab<>(name, project.projectPage))
         Context.MAINWINDOW_CONTROLLER.mainPane.setCenter(projectPane)
     }

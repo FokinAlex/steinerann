@@ -3,11 +3,10 @@ package gui.fxml.components
 import gui.Parameters
 import javafx.beans.property.DoubleProperty
 import javafx.beans.property.SimpleDoubleProperty
-import javafx.scene.control.Label
 import javafx.scene.control.ScrollPane
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.Pane
-import math.graphs.theory.abstractions.AbstractVertex
+import math.graphs.theory.Vertex
 import math.metricspaces.EuclideanPoint
 
 class GraphPane extends ScrollPane {
@@ -56,7 +55,7 @@ class GraphPane extends ScrollPane {
 
     // private final Map<Sos, Duo<DoubleProperty, DoubleProperty> sos
 
-    def newVertex(AbstractVertex graphVertex) {
+    def newVertex(Vertex graphVertex) {
         DoubleProperty xProperty = new SimpleDoubleProperty((graphVertex.getLocation() as EuclideanPoint).x * Parameters.SCALE_MULTIPLIER)
         DoubleProperty yProperty = new SimpleDoubleProperty((graphVertex.getLocation() as EuclideanPoint).y * Parameters.SCALE_MULTIPLIER)
         EuclideanVertex vertex = new EuclideanVertex(xProperty, yProperty, graphVertex.getType())

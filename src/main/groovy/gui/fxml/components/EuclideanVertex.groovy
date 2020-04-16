@@ -4,15 +4,15 @@ import gui.Parameters
 import javafx.beans.property.DoubleProperty
 import javafx.scene.layout.StackPane
 import javafx.scene.shape.Circle
-import math.graphs.VertexType
+import math.graphs.VertexTypes
 
 class EuclideanVertex extends StackPane {
 
     private Circle body
 
-    EuclideanVertex(DoubleProperty x, DoubleProperty y, VertexType type) {
+    EuclideanVertex(DoubleProperty x, DoubleProperty y, VertexTypes type) {
 
-        body = new Circle(type == VertexType.STEINER ? Parameters.STEINER_VERTEX_RADIUS : Parameters.SIMPLE_VERTEX_RADIUS)
+        body = new Circle(type == VertexTypes.STEINER ? Parameters.STEINER_VERTEX_RADIUS : Parameters.SIMPLE_VERTEX_RADIUS)
         body.layoutXProperty().set(body.radius)
         body.layoutYProperty().set(body.radius)
         body.setStyle("-fx-fill: ${Parameters.HEX_COLOR_DARK_GREY};")

@@ -1,9 +1,9 @@
 package utils.orl
 
 import api.ProjectFiles
-import math.graphs.VertexType
-import math.graphs.euclidean.EuclideanGraph
-import math.graphs.euclidean.EuclideanVertex
+import math.graphs.VertexTypes
+import math.graphs.theory.Graph
+import math.graphs.theory.Vertex
 import math.metricspaces.MetricSpace
 import utils.others.Duo
 
@@ -46,15 +46,14 @@ final class OrlCaseLoader {
         }
     }
 
-    static EuclideanGraph loadCase(String caseName) {
+    static Graph loadCase(String caseName) {
         File resource = CASES.get(caseName)
 
-        EuclideanGraph graph = new EuclideanGraph()
-        EuclideanVertex vertex
+        Graph graph = new Graph(MetricSpace.EUCLIDEAN)
+        Vertex vertex
 
         int countOfPoint
         String[] location
-        int id
         double x
         double y
         resource.withReader { reader ->
@@ -66,17 +65,15 @@ final class OrlCaseLoader {
                 location = reader.readLine().split(' ')
                 x = Double.valueOf(location[1])
                 y = Double.valueOf(location[2])
-                vertex = new EuclideanVertex(graph.getVertexSequnce(), MetricSpace.EUCLIDEAN.point(x, y))
-                graph.addVertex(vertex)
+                graph.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
             }
             countOfPoint = Integer.valueOf(reader.readLine())
             for (int j = 0; j < countOfPoint; j++) {
                 location = reader.readLine().trim().split(' ')
                 x = Double.valueOf(location[1])
                 y = Double.valueOf(location[2])
-                vertex = new EuclideanVertex(graph.getVertexSequnce(), MetricSpace.EUCLIDEAN.point(x, y))
-                vertex.setType(VertexType.STEINER)
-                graph.addVertex(vertex)
+                vertex = graph.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
+                vertex.setType(VertexTypes.STEINER)
             }
         }
         graph

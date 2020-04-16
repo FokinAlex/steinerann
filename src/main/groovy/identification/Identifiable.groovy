@@ -1,10 +1,10 @@
 package identification
 
-class Identifiable {
+abstract class Identifiable {
 
     protected final int id
 
-    protected Identifiable(Sequence sequence) throws Exception {
+    Identifiable(Sequence sequence) throws Exception {
         this.id = sequence.next()
     }
 

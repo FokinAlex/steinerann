@@ -1,8 +1,6 @@
 package api.enities.pages
 
-import math.graphs.theory.abstractions.AbstractGraph
-
-class OrlCasePage<Graph extends AbstractGraph> extends GraphPage<Graph> {
+class OrlCasePage<Graph extends math.graphs.theory.Graph> extends GraphPage<Graph> {
 
     OrlCasePage(String name, Graph graph) {
         super(name, graph)

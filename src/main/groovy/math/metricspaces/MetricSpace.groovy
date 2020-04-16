@@ -3,10 +3,16 @@ package math.metricspaces
 import math.utils.MathUtils
 
 enum MetricSpace {
-    EUCLIDEAN (EUCLIDEAN_METRIC) {
+    EUCLIDEAN ({ first, second ->
+        if (first instanceof EuclideanPoint && second instanceof EuclideanPoint) {
+            Math.sqrt(MathUtils.square(first.x - second.x) + MathUtils.square(first.y - second.y))
+        } else {
+            throw new IllegalArgumentException("Not euclidean point in Euclidean space")
+        }
+    }) {
 
         @Override
-        <Param> Point point(Param... params) {
+        <Param> EuclideanPoint point(Param... params) {
             if (params.length != COUNT_OF_EUCLIDEAN_POINT_PARAMS) {
                 // TODO:
                 throw new IllegalArgumentException("It must be pair (x, y) to initialize point in Euclidean space")
@@ -20,15 +26,6 @@ enum MetricSpace {
     };
 
     private static final int COUNT_OF_EUCLIDEAN_POINT_PARAMS = 2
-
-    private static def EUCLIDEAN_METRIC = { first, second ->
-        if (first instanceof EuclideanPoint && second instanceof EuclideanPoint) {
-            // TODO: get root
-            MathUtils.square(first.x - second.x) + MathUtils.square(first.y - second.y)
-        } else {
-            throw new IllegalArgumentException("Not euclidean point in Euclidean space")
-        }
-    }
 
     final Closure metric
 
