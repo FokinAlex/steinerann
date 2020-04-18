@@ -1,19 +1,13 @@
 package utils.orl
 
 import api.ProjectFiles
-import api.control.OtherGraphAlgorithms
 import log.LogFacade
-import math.algorithms.Algorithm
 import math.algorithms.graph.KruskallAlgorithm
 import math.graphs.theory.Graph
 
 final class OrlDataConvertTools {
 
     private static final def NUMBERS = [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-
-    static void main(String[] args) {
-        fillWithEdges()
-    }
 
     private static void fillWithEdges() {
         OrlCaseLoader.CASES.each { entry ->

@@ -1,6 +1,6 @@
 package api.enities.pages
 
-import gui.fxml.components.GraphPane
+import gui.fxml.components.euclidean.EuclideanGraphPane
 import javafx.scene.Node
 import math.graphs.theory.Graph
 import math.graphs.theory.Vertex
@@ -8,7 +8,7 @@ import math.graphs.theory.Vertex
 class GraphPage<G extends Graph> extends Page {
 
     final G graph
-    final GraphPane content
+    final EuclideanGraphPane content
 
     GraphPage(String name, G graph) {
         super(name)
@@ -16,10 +16,13 @@ class GraphPage<G extends Graph> extends Page {
         this.content = initContent()
     }
 
-    private GraphPane initContent() {
-        GraphPane pane = new GraphPane()
+    private EuclideanGraphPane initContent() {
+        EuclideanGraphPane pane = new EuclideanGraphPane()
         graph.topology.vertices.each {
             pane.newVertex(it as Vertex)
+        }
+        graph.edges.each {
+            pane.newEdge(it.a, it.b)
         }
         pane
     }

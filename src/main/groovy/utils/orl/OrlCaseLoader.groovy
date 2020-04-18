@@ -52,28 +52,38 @@ final class OrlCaseLoader {
         Graph graph = new Graph(MetricSpace.EUCLIDEAN)
         Vertex vertex
 
-        int countOfPoint
-        String[] location
-        double x
-        double y
+        int count
+        String[] values
+        def x
+        def y
         resource.withReader { reader ->
             // TODO: Save it
             reader.readLine() // save Smt
             reader.readLine() // save Mst
-            countOfPoint = Integer.valueOf(reader.readLine())
-            for (int j = 0; j < countOfPoint; j++) {
-                location = reader.readLine().split(' ')
-                x = Double.valueOf(location[1])
-                y = Double.valueOf(location[2])
+            count = Integer.valueOf(reader.readLine())
+            for (int ignore = 0; ignore < count; ignore++) {
+                values = reader.readLine().split(' ')
+                x = Double.valueOf(values[1])
+                y = Double.valueOf(values[2])
                 graph.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
             }
-            countOfPoint = Integer.valueOf(reader.readLine())
-            for (int j = 0; j < countOfPoint; j++) {
-                location = reader.readLine().trim().split(' ')
-                x = Double.valueOf(location[1])
-                y = Double.valueOf(location[2])
+            count = Integer.valueOf(reader.readLine())
+            for (int ignore = 0; ignore < count; ignore++) {
+                values = reader.readLine().trim().split(' ')
+                x = Double.valueOf(values[1])
+                y = Double.valueOf(values[2])
                 vertex = graph.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
                 vertex.setType(VertexTypes.STEINER)
+            }
+            count = Integer.valueOf(reader.readLine())
+            for (int ignore = 0; ignore < count; ignore++) {
+                values = reader.readLine().trim().split(' ')
+                x = Integer.valueOf(values[0])
+                y = Integer.valueOf(values[1])
+                graph.newEdge(
+                    graph.topology.vertices.find { it.hashCode() == x },
+                    graph.topology.vertices.find { it.hashCode() == y }
+                )
             }
         }
         graph

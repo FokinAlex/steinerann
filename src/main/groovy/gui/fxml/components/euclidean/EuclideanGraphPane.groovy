@@ -1,15 +1,13 @@
-package gui.fxml.components
+package gui.fxml.components.euclidean
 
 import gui.Parameters
-import javafx.beans.property.DoubleProperty
-import javafx.beans.property.SimpleDoubleProperty
 import javafx.scene.control.ScrollPane
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.Pane
 import math.graphs.theory.Vertex
 import math.metricspaces.EuclideanPoint
 
-class GraphPane extends ScrollPane {
+class EuclideanGraphPane extends ScrollPane {
 
     static final String GRAPH_PANE_STYLE = """
         -fx-border-color:     ${Parameters.HEX_COLOR_LIGHT_GREY};
@@ -17,13 +15,11 @@ class GraphPane extends ScrollPane {
     """
 
     final AnchorPane mainPane
-
     final Pane graphPane
-    // final Label zeroLabel
-    // final Label oneXLabel
-    // final Label oneYLabel
 
-    GraphPane() {
+    private final Map<Vertex, EuclideanVertex> vertices = new HashMap<>()
+
+    EuclideanGraphPane() {
         mainPane = new AnchorPane()
         mainPane.setMaxSize(Parameters.MAIN_PANE_WIDTH, Parameters.MAIN_PANE_HEIGHT)
         mainPane.setMinSize(Parameters.MAIN_PANE_WIDTH, Parameters.MAIN_PANE_HEIGHT)
@@ -35,34 +31,30 @@ class GraphPane extends ScrollPane {
         graphPane.setPrefSize(Parameters.WORK_GROUND_SIDE_SIZE, Parameters.WORK_GROUND_SIDE_SIZE)
         graphPane.setStyle(GRAPH_PANE_STYLE)
 
-        // zeroLabel = new Label("0")
-        // oneXLabel = new Label("1")
-        // oneYLabel = new Label("1")
-
         mainPane.getChildren().add(graphPane)
         mainPane.setTopAnchor(graphPane, Parameters.WORK_GROUND_BORDER_SIZE)
         mainPane.setLeftAnchor(graphPane, Parameters.WORK_GROUND_BORDER_SIZE)
-        // mainPane.getChildren().addAll(zeroLabel, oneXLabel, oneYLabel)
-        // mainPane.setTopAnchor(zeroLabel, Parameters.WORK_GROUND_BORDER_SIZE)
-        // mainPane.setLeftAnchor(zeroLabel, Parameters.WORK_GROUND_BORDER_SIZE)
-        // mainPane.setTopAnchor(oneXLabel, Parameters.WORK_GROUND_BORDER_SIZE)
-        // mainPane.setLeftAnchor(oneXLabel, Parameters.WORK_GROUND_BORDER_SIZE + Parameters.WORK_GROUND_SIDE_SIZE)
-        // mainPane.setTopAnchor(oneYLabel, Parameters.WORK_GROUND_BORDER_SIZE  + Parameters.WORK_GROUND_SIDE_SIZE)
-        // mainPane.setLeftAnchor(oneYLabel, Parameters.WORK_GROUND_BORDER_SIZE)
 
         this.content = mainPane
     }
 
-    // private final Map<Sos, Duo<DoubleProperty, DoubleProperty> sos
-
-    def newVertex(Vertex graphVertex) {
-        DoubleProperty xProperty = new SimpleDoubleProperty((graphVertex.getLocation() as EuclideanPoint).x * Parameters.SCALE_MULTIPLIER)
-        DoubleProperty yProperty = new SimpleDoubleProperty((graphVertex.getLocation() as EuclideanPoint).y * Parameters.SCALE_MULTIPLIER)
-        EuclideanVertex vertex = new EuclideanVertex(xProperty, yProperty, graphVertex.getType())
+    EuclideanVertex newVertex(Vertex graphVertex) {
+        EuclideanVertex vertex = new EuclideanVertex(graphVertex.getType())
+        vertex.bind((graphVertex.location as EuclideanPoint).x, (graphVertex.location as EuclideanPoint).y)
         graphPane.getChildren().add(vertex)
-
+        vertices.put(graphVertex, vertex)
         // xProperty.addListener(xListener)
         // yProperty.addListener(yListener)
+        vertex
+    }
+
+    EuclideanLine newEdge(Vertex vertexA, Vertex vertexB) {
+        EuclideanLine line = new EuclideanLine(
+                vertices.get(vertexA),
+                vertices.get(vertexB)
+        )
+        graphPane.getChildren().add(line)
+        line
     }
 
 //    def xListener = { observable, oldValue, newValue ->
