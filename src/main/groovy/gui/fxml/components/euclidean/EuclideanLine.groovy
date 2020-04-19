@@ -1,6 +1,6 @@
 package gui.fxml.components.euclidean
 
-import gui.Parameters
+import api.Parameters
 import javafx.scene.Group
 import javafx.scene.shape.Line
 

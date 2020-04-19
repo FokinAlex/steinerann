@@ -1,5 +1,7 @@
 package api.enities.pages
 
+import api.Parameters
+import gui.fxml.components.PageContentPane
 import gui.fxml.components.euclidean.EuclideanGraphPane
 import javafx.scene.Node
 import math.graphs.theory.Graph
@@ -8,7 +10,7 @@ import math.graphs.theory.Vertex
 class GraphPage<G extends Graph> extends Page {
 
     final G graph
-    final EuclideanGraphPane content
+    final PageContentPane content
 
     GraphPage(String name, G graph) {
         super(name)
@@ -16,15 +18,18 @@ class GraphPage<G extends Graph> extends Page {
         this.content = initContent()
     }
 
-    private EuclideanGraphPane initContent() {
-        EuclideanGraphPane pane = new EuclideanGraphPane()
+    private PageContentPane initContent() {
+        PageContentPane _content = new PageContentPane(Parameters.GRAPH_PAGE_MAIN_PANE_WIDTH, Parameters.GRAPH_PAGE_MAIN_PANE_HEIGHT)
+        // TODO: add graph pane
+        EuclideanGraphPane graphPane = new EuclideanGraphPane()
         graph.topology.vertices.each {
-            pane.newVertex(it as Vertex)
+            graphPane.newVertex(it as Vertex)
         }
         graph.edges.each {
-            pane.newEdge(it.a, it.b)
+            graph.newEdge(it.a, it.b)
         }
-        pane
+        _content.addNode(graphPane, Parameters.WORK_GROUND_BORDER_SIZE, Parameters.WORK_GROUND_BORDER_SIZE)
+        _content
     }
 
     @Override

@@ -1,6 +1,6 @@
 package gui.fxml.components.euclidean
 
-import gui.Parameters
+import api.Parameters
 import javafx.beans.property.DoubleProperty
 import javafx.scene.layout.StackPane
 import javafx.scene.shape.Circle
