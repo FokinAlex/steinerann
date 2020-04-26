@@ -12,7 +12,8 @@ class EuclideanGraphPane extends AnchorPane {
         //-fx-background-color: ${Parameters.HEX_COLOR_WHITE};
     """
 
-    private final Map<Vertex, EuclideanVertex> vertices = new HashMap<>()
+    private final Map<Vertex, EuclideanVertex> verticesMapping = new HashMap<>()
+    private final Set<EuclideanLine> edges = new HashSet<>()
 
     EuclideanGraphPane() {
         setMaxSize(Parameters.WORK_GROUND_SIDE_SIZE, Parameters.WORK_GROUND_SIDE_SIZE)
@@ -25,8 +26,8 @@ class EuclideanGraphPane extends AnchorPane {
     EuclideanVertex newVertex(Vertex graphVertex) {
         EuclideanVertex vertex = new EuclideanVertex(graphVertex.getType())
         vertex.bind((graphVertex.location as EuclideanPoint).x, (graphVertex.location as EuclideanPoint).y)
-        getChildren().add(vertex)
-        vertices.put(graphVertex, vertex)
+        verticesMapping.put(graphVertex, vertex)
+        children.add(vertex)
         // xProperty.addListener(xListener)
         // yProperty.addListener(yListener)
         vertex
@@ -34,10 +35,18 @@ class EuclideanGraphPane extends AnchorPane {
 
     EuclideanLine newEdge(Vertex vertexA, Vertex vertexB) {
         EuclideanLine line = new EuclideanLine(
-                vertices.get(vertexA),
-                vertices.get(vertexB)
+                verticesMapping.get(vertexA),
+                verticesMapping.get(vertexB)
         )
-        getChildren().add(line)
+        children.add(line)
+        edges.add(line)
         line
+    }
+
+    def clear() {
+        edges.each { children.remove(it) }
+        edges.clear()
+        verticesMapping.each { children.remove(it.value) }
+        verticesMapping.clear()
     }
 }

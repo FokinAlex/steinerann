@@ -46,10 +46,11 @@ final class OrlCaseLoader {
         }
     }
 
-    static Graph loadCase(String caseName) {
+    static Duo<Graph, Graph> loadCase(String caseName) {
         File resource = CASES.get(caseName)
 
         Graph graph = new Graph(MetricSpace.EUCLIDEAN)
+        Graph steinerTree = new Graph(MetricSpace.EUCLIDEAN)
         Vertex vertex
 
         int count
@@ -65,6 +66,7 @@ final class OrlCaseLoader {
                 values = reader.readLine().split(' ')
                 x = Double.valueOf(values[1])
                 y = Double.valueOf(values[2])
+                steinerTree.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
                 graph.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
             }
             count = Integer.valueOf(reader.readLine())
@@ -72,7 +74,7 @@ final class OrlCaseLoader {
                 values = reader.readLine().trim().split(' ')
                 x = Double.valueOf(values[1])
                 y = Double.valueOf(values[2])
-                vertex = graph.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
+                vertex = steinerTree.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
                 vertex.setType(VertexTypes.STEINER)
             }
             count = Integer.valueOf(reader.readLine())
@@ -80,12 +82,12 @@ final class OrlCaseLoader {
                 values = reader.readLine().trim().split(' ')
                 x = Integer.valueOf(values[0])
                 y = Integer.valueOf(values[1])
-                graph.newEdge(
-                    graph.topology.vertices.find { it.hashCode() == x },
-                    graph.topology.vertices.find { it.hashCode() == y }
+                steinerTree.newEdge(
+                    steinerTree.topology.vertices.find { it.hashCode() == x },
+                    steinerTree.topology.vertices.find { it.hashCode() == y }
                 )
             }
         }
-        graph
+        new Duo<>(a: graph, b: steinerTree)
     }
 }

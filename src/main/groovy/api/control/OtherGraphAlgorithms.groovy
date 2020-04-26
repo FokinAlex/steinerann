@@ -1,7 +1,8 @@
 package api.control
 
 import math.algorithms.Algorithm
-import math.algorithms.graph.KruskallAlgorithm
+import math.algorithms.other.KruskallAlgorithm
+import math.algorithms.steiner.SmithLeeLiebmanAlgorithm
 import math.graphs.theory.Graph
 
 // TODO: Observer
@@ -10,10 +11,17 @@ enum OtherGraphAlgorithms implements AlgorithmType<Graph> {
     KRUSKALL_ALGORITHM("Kruskall Algorithm") {
 
         @Override
-        Algorithm getInstance(Graph graph) {
-            new KruskallAlgorithm(graph)
+        Algorithm initialize(Graph graph) {
+            new KruskallAlgorithm<Graph>(graph)
         }
+    },
+    // TODO: [!] temp, move to steiner algorithm
+    SMITH_LEE_LIEBMAN_ALGORITHM("Smith-Lee-Liebman Algorithm") {
 
+        @Override
+        Algorithm initialize(Graph graph) {
+            new SmithLeeLiebmanAlgorithm<Graph>(graph)
+        }
     };
 
     final String name
@@ -23,15 +31,5 @@ enum OtherGraphAlgorithms implements AlgorithmType<Graph> {
     }
 
     @Override
-    void run(Graph graph) {
-        // TODO: log
-        Algorithm algorithm = this.getInstance(graph)
-        println "start ${algorithm}"
-        Thread thread = new Thread(algorithm)
-        thread.start()
-        println "finish ${algorithm}"
-    }
-
-    // TODO: ???
-    abstract Algorithm<Graph> getInstance(Graph graph)
+    abstract Algorithm initialize(Graph graph)
 }

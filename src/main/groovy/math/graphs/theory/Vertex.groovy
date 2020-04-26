@@ -7,12 +7,17 @@ import math.metricspaces.Point
 
 class Vertex<Location extends Point> extends Identifiable {
 
-    final Location location
+    Location location
     final Set<Vertex> neighbors = new HashSet<>()
     VertexTypes type = VertexTypes.SIMPLE
 
     Vertex(Sequence sequence, Location location) {
         super(sequence)
         this.location = location
+    }
+
+    @Override
+    String toString() {
+        "#${id} (${location})"
     }
 }

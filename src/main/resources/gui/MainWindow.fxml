@@ -3,37 +3,38 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.fxml.MainWindowController">
-
-    <children>
-        <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.fxml.MainWindowController">
+    <top>
+        <MenuBar fx:id="menuBar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="NEVER">
             <menus>
                 <Menu fx:id="gui_FileMenuActions__fileMenu" mnemonicParsing="false" text="File">
                     <items>
                     </items>
                 </Menu>
-                <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit"/>
                 <Menu fx:id="projectMenu" mnemonicParsing="false" text="Project">
                     <items>
                         <Menu mnemonicParsing="false" text="New">
                             <items>
-                                <MenuItem fx:id="gui_fxml_ProjectMenu__projectNewGraphPageMenuItem"
-                                          mnemonicParsing="false"
-                                          onAction="#newGraphPage"
-                                          text="Graph Page"/>
-                                <Menu fx:id="gui_fxml_ProjectMenu__projectNewOrlCaseMenu"
-                                      mnemonicParsing="false"
-                                      text="OR-Library Case"/>
+                                <MenuItem fx:id="gui_fxml_ProjectMenu__projectNewGraphPageMenuItem" mnemonicParsing="false" onAction="#newGraphPage" text="Graph Page" />
+                                <Menu fx:id="gui_fxml_ProjectMenu__projectNewOrlCaseMenu" mnemonicParsing="false" text="OR-Library Case" />
                             </items>
                         </Menu>
                     </items>
                 </Menu>
-                <Menu fx:id="pageMenu" mnemonicParsing="false" text="Page"/>
-                <Menu fx:id="gui_fxml_AlgorithmsMenu__algorithmsMenu" mnemonicParsing="false" text="Algorithms"/>
+                <Menu fx:id="gui_fxml_AlgorithmsMenu__algorithmsMenu" mnemonicParsing="false" text="Algorithms" />
             </menus>
         </MenuBar>
+    </top>
 
-        <BorderPane fx:id="mainPane" prefWidth="200.0"/>
-    </children>
-</VBox>
+    <center>
+        <BorderPane fx:id="mainPane" prefHeight="500.0" prefWidth="700.0">
+            <right>
+                <AnchorPane style="-fx-border-color: #c0c0c0;">
+                    <children>
+                        <VBox fx:id="gui_fxml_PropertiesVBox__propertiesVBox" minWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                    </children>
+                </AnchorPane>
+            </right>
+        </BorderPane>
+    </center>
+</BorderPane>

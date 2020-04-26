@@ -21,8 +21,14 @@ class Graph {
         topology.newVertex(location)
     }
 
-    def removerVertex(Vertex vertex) {
-        topology.removeVertex(vertex)
+    def removeVertex(Vertex vertex) {
+        if (topology.removeVertex(vertex)) {
+            edges.removeAll { it.a == vertex || it.b == vertex }
+        }
+    }
+
+    def removeVertices(Vertex... vertices) {
+        vertices.each { removeVertex(it) }
     }
 
     def newEdge(Vertex vertexA, Vertex vertexB) {
@@ -69,6 +75,7 @@ class Graph {
                 neighbor.neighbors.remove(vertex)
                 neighborsIterator.remove()
             }
+            vertices.remove(vertex)
         }
 
         private def removeEdge(Vertex vertexA, Vertex vertexB) {

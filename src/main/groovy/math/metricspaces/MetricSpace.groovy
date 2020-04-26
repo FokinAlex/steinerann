@@ -5,7 +5,7 @@ import math.utils.MathUtils
 enum MetricSpace {
     EUCLIDEAN ({ first, second ->
         if (first instanceof EuclideanPoint && second instanceof EuclideanPoint) {
-            Math.sqrt(MathUtils.square(first.x - second.x) + MathUtils.square(first.y - second.y))
+            Math.sqrt(MathUtils.square(first.x.value - second.x.value) + MathUtils.square(first.y.value - second.y.value))
         } else {
             throw new IllegalArgumentException("Not euclidean point in Euclidean space")
         }

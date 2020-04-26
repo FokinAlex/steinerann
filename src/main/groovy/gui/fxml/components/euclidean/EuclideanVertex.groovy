@@ -18,9 +18,9 @@ class EuclideanVertex extends StackPane {
         this.getChildren().add(body)
     }
 
-    def bind(DoubleProperty xProperty, DoubleProperty yProperty) {
-        this.layoutXProperty().set(xProperty.get() * Parameters.SCALE_MULTIPLIER - body.radius)
-        this.layoutYProperty().set(yProperty.get() * Parameters.SCALE_MULTIPLIER - body.radius)
+    def bind(double x, double y) {
+        this.layoutXProperty().set(x * Parameters.SCALE_MULTIPLIER - body.radius)
+        this.layoutYProperty().set(y * Parameters.SCALE_MULTIPLIER - body.radius)
 //        this.layoutXProperty().bind((xProperty * Parameters.SCALE_MULTIPLIER).subtract(body.radiusProperty()))
 //        this.layoutYProperty().bind((yProperty * Parameters.SCALE_MULTIPLIER).subtract(body.radiusProperty()))
     }

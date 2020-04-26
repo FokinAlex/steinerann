@@ -2,7 +2,7 @@ package utils.orl
 
 import api.ProjectFiles
 import log.LogFacade
-import math.algorithms.graph.KruskallAlgorithm
+import math.algorithms.other.KruskallAlgorithm
 import math.graphs.theory.Graph
 
 final class OrlDataConvertTools {
@@ -11,7 +11,7 @@ final class OrlDataConvertTools {
 
     private static void fillWithEdges() {
         OrlCaseLoader.CASES.each { entry ->
-            Graph graph = OrlCaseLoader.loadCase(entry.key)
+            Graph graph = OrlCaseLoader.loadCase(entry.key).b
             new KruskallAlgorithm(graph).run()
             entry.value << "${graph.edges.size()}\n"
             graph.edges.each {

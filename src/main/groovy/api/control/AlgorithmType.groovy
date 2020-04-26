@@ -1,8 +1,10 @@
 package api.control
 
-interface AlgorithmType<T> {
+import math.algorithms.Algorithm
+
+interface AlgorithmType<Input> {
 
     String getName()
 
-    void run(T t)
+    Algorithm initialize(Input input)
 }

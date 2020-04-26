@@ -1,7 +1,12 @@
 package math.utils
 
+import log.LogFacade
 import math.graphs.theory.Graph
 import math.graphs.theory.Vertex
+import math.metricspaces.EuclideanPoint
+import math.metricspaces.MetricSpace
+import math.utils.delaunaytriangulator.DelaunayTriangulator
+import math.utils.delaunaytriangulator.Vector2D
 import utils.others.Triple
 
 final class GraphUtils {
@@ -46,49 +51,56 @@ final class GraphUtils {
         return false
     }
 
-    /*
-        static void main(String[] args) {
-        Sequence sequence = new Sequence()
-        Vertex vertex1 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
-        Vertex vertex2 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
-        Vertex vertex3 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
-        Vertex vertex4 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
-        Vertex vertex5 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
-        Vertex vertex6 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
-        vertex1.neighbors.add(vertex2)
-        vertex2.neighbors.add(vertex1)
-        vertex1.neighbors.add(vertex3)
-        vertex3.neighbors.add(vertex1)
-        vertex2.neighbors.add(vertex4)
-        vertex4.neighbors.add(vertex2)
-        vertex2.neighbors.add(vertex5)
-        vertex5.neighbors.add(vertex2)
-        vertex3.neighbors.add(vertex5)
-        vertex5.neighbors.add(vertex3)
-        Set<Vertex> set = Set.of(
-                vertex1 as Vertex,
-                vertex2 as Vertex,
-                vertex3 as Vertex,
-                vertex4 as Vertex,
-                vertex5 as Vertex,
-                vertex6 as Vertex
-        )
-        println isReachable(vertex1, vertex5)
-        println isReachable(vertex3, vertex6)
-    }
-    /*
-     */
+    static final List<Triple<Vertex, Vertex, Vertex>> triangulation(Graph graph) {
+        if (graph.topology.vertices.size() < 3) {
+            LogFacade.WARN(new IllegalArgumentException("Less than three points in point set"))
+            return null
+        }
 
-//    static boolean isTree(STBGraph graph) throws StackOverflowError {
-//        Map<STBTerminal, Boolean> terminals = new HashMap<>();
-//        graph.getAllVertexes().forEach(terminal -> terminals.put((STBTerminal) terminal, false));
-//
-//        Iterator<STBTerminal> iterator = terminals.keySet().iterator();
-//        while (iterator.hasNext()) {
-//            STBTerminal terminal = iterator.next();
-//            if (hasCycle(terminal, terminals, null, graph)) return false;
-//            terminals.entrySet().forEach(entry -> entry.setValue(false));
-//        }
-//        return true;
-//    }
+        Map<Vector2D, Vertex> mapping = graph.topology.vertices.collectEntries {
+            [new Vector2D((it.location as EuclideanPoint).x.value, (it.location as EuclideanPoint).y.value), it]
+        }
+
+        DelaunayTriangulator triangulator = new DelaunayTriangulator(mapping.keySet().toList())
+        triangulator.triangulate()
+        triangulator.getTriangles().stream()
+            .map { new Triple<Vertex, Vertex, Vertex>(
+                    a: mapping.get(it.a), // TODO: as Vertex ?
+                    b: mapping.get(it.b), // TODO: as Vertex ?
+                    c: mapping.get(it.c)  // TODO: as Vertex ?
+            )}
+            .collect { it }
+    }
 }
+
+/*
+    static void main(String[] args) {
+    Sequence sequence = new Sequence()
+    Vertex vertex1 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
+    Vertex vertex2 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
+    Vertex vertex3 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
+    Vertex vertex4 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
+    Vertex vertex5 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
+    Vertex vertex6 = new Vertex<EuclideanPoint>(sequence, MetricSpace.EUCLIDEAN.point(1d, 3d))
+    vertex1.neighbors.add(vertex2)
+    vertex2.neighbors.add(vertex1)
+    vertex1.neighbors.add(vertex3)
+    vertex3.neighbors.add(vertex1)
+    vertex2.neighbors.add(vertex4)
+    vertex4.neighbors.add(vertex2)
+    vertex2.neighbors.add(vertex5)
+    vertex5.neighbors.add(vertex2)
+    vertex3.neighbors.add(vertex5)
+    vertex5.neighbors.add(vertex3)
+    Set<Vertex> set = Set.of(
+            vertex1 as Vertex,
+            vertex2 as Vertex,
+            vertex3 as Vertex,
+            vertex4 as Vertex,
+            vertex5 as Vertex,
+            vertex6 as Vertex
+    )
+    println isReachable(vertex1, vertex5)
+    println isReachable(vertex3, vertex6)
+}
+// */

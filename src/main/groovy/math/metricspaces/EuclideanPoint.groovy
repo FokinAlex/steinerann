@@ -1,16 +1,18 @@
 package math.metricspaces
 
-import javafx.beans.property.DoubleProperty
-import javafx.beans.property.SimpleDoubleProperty
-
 class EuclideanPoint implements Point {
 
-    DoubleProperty x
-    DoubleProperty y
+    double x
+    double y
 
     EuclideanPoint(Double x, Double y) {
-        this.x = new SimpleDoubleProperty(x)
-        this.y = new SimpleDoubleProperty(y)
+        this.x = x
+        this.y = y
+    }
+
+    @Override
+    String toString() {
+        "x: ${x}, y: ${y}"
     }
 }
 
