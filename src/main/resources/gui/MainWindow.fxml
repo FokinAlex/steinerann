@@ -11,17 +11,17 @@
                     <items>
                     </items>
                 </Menu>
-                <Menu fx:id="projectMenu" mnemonicParsing="false" text="Project">
+                <Menu fx:id="projectMenu" mnemonicParsing="false" text="Проект">
                     <items>
-                        <Menu mnemonicParsing="false" text="New">
+                        <!-- <MenuItem fx:id="gui_fxml_ProjectMenu__projectNewGraphPageMenuItem" mnemonicParsing="false" onAction="#newGraphPage" text="Graph Page" /> -->
+                        <Menu mnemonicParsing="false" text="Открыть">
                             <items>
-                                <MenuItem fx:id="gui_fxml_ProjectMenu__projectNewGraphPageMenuItem" mnemonicParsing="false" onAction="#newGraphPage" text="Graph Page" />
-                                <Menu fx:id="gui_fxml_ProjectMenu__projectNewOrlCaseMenu" mnemonicParsing="false" text="OR-Library Case" />
+                                <Menu fx:id="gui_fxml_ProjectMenu__projectNewOrlCaseMenu" mnemonicParsing="false" text="Библиотека OR-Library" />
                             </items>
                         </Menu>
                     </items>
                 </Menu>
-                <Menu fx:id="gui_fxml_AlgorithmsMenu__algorithmsMenu" mnemonicParsing="false" text="Algorithms" />
+                <Menu fx:id="gui_fxml_AlgorithmsMenu__algorithmsMenu" mnemonicParsing="false" text="Алгоритмы" />
             </menus>
         </MenuBar>
     </top>

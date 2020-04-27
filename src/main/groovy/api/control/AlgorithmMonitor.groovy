@@ -9,11 +9,13 @@ final enum AlgorithmMonitor {
     INSTANCE;
 
     private final Map<String, Set<AlgorithmType>> INNER_ALGORITHMS = Map.of(
-            "Other", new HashSet<>(OtherGraphAlgorithms.values().collect()) as Set<AlgorithmType>
+            "Задача Штейнера", new HashSet<>(SteinerAlgorithms.values().collect()) as Set<AlgorithmType>,
+            "Другие", new HashSet<>(OtherGraphAlgorithms.values().collect()) as Set<AlgorithmType>
     )
 
     final Map<String, List<String>> ALGORITHMS = Map.of(
-            "Other", OtherGraphAlgorithms.values().collect { it.name } as List<String>
+            "Задача Штейнера", SteinerAlgorithms.values().collect { it.name } as List<String>,
+            "Другие", OtherGraphAlgorithms.values().collect { it.name } as List<String>
     )
 
     // private final Map<Algorithm, Duo<Thread, AlgorithmFriendlyPage>> MONITOR = new HashMap<>()
