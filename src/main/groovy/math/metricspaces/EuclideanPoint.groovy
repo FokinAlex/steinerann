@@ -9,5 +9,10 @@ class EuclideanPoint implements Point {
         this.x = x
         this.y = y
     }
+
+    @Override
+    String toString() {
+        "x: ${x}, y: ${y}"
+    }
 }
 

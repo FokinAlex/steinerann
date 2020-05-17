@@ -18,11 +18,15 @@ enum LogFacade {
     LogFacade(String prefix) {
         this.prefix = prefix
     }
-    
+
     def call(String message) {
         OutPrintStreamLogger.call("${prefix}${message}")
     }
-    
+
+    def call(Exception exception) {
+        call(exception.message, exception)
+    }
+
     def call(String message, Exception exception) {
         OutPrintStreamLogger.call("${prefix}${message}")
         ExceptionsLogger.call("${prefix}${message}")

@@ -1,6 +1,6 @@
 package math.graphs
 
-enum VertexType {
+enum VertexTypes {
     SIMPLE,
     STEINER
 }

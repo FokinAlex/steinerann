@@ -9,16 +9,10 @@ trait ProjectMenu {
 
     @FXML private Menu     projectMenu
     @FXML private MenuItem projectNewGraphPageMenuItem
-    @FXML private MenuItem projectRenameProjectMenuItem
     @FXML private Menu     projectNewOrlCaseMenu
 
     @FXML
     def newGraphPage() {
         Context.PROJECT_CONTROLLER.newGraphPage("New Page")
-    }
-
-    @FXML
-    def renameProject() {
-        Context.PROJECT_CONTROLLER.renameProject("Sas dvas")
     }
 }

@@ -6,4 +6,9 @@ final class Quad<A, B, C, D> {
     B b
     C c
     D d
+
+    @Override
+    final String toString() {
+        "[${a}, ${b}, ${c}, ${d}]"
+    }
 }

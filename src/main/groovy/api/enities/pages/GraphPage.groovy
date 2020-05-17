@@ -1,31 +1,56 @@
 package api.enities.pages
 
-import gui.fxml.components.GraphPane
+import api.Parameters
+import gui.fxml.components.PageContentPane
+import gui.fxml.components.euclidean.EuclideanGraphPane
+import javafx.beans.property.BooleanProperty
 import javafx.scene.Node
-import math.graphs.theory.abstractions.AbstractGraph
-import math.graphs.theory.abstractions.AbstractVertex
+import math.graphs.theory.Graph
+import math.graphs.theory.Vertex
 
-class GraphPage<Graph extends AbstractGraph> extends Page {
+class GraphPage<G extends Graph> extends Page implements AlgorithmFriendlyPage<G> {
 
-    final Graph graph
-    final GraphPane content
+    final G graph
+    final PageContentPane content
+    final EuclideanGraphPane graphPane
 
-    GraphPage(String name, Graph graph) {
+    GraphPage(String name, G graph) {
         super(name)
         this.graph = graph
+        this.graphPane = new EuclideanGraphPane()
         this.content = initContent()
     }
 
-    private GraphPane initContent() {
-        GraphPane pane = new GraphPane()
-        graph.getVertexes().each {
-            pane.newVertex(it as AbstractVertex)
-        }
-        pane
+    private PageContentPane initContent() {
+        PageContentPane _content = new PageContentPane(Parameters.GRAPH_PAGE_MAIN_PANE_WIDTH, Parameters.GRAPH_PAGE_MAIN_PANE_HEIGHT)
+
+        _content.addNode(
+                graphPane,
+                Parameters.WORK_GROUND_BORDER_SIZE,
+                Parameters.WORK_GROUND_BORDER_SIZE
+        )
+
+        _content
+    }
+
+    def refillGraphPane() {
+        graphPane.clear()
+        graph.topology.vertices.each { graphPane.newVertex(it as Vertex) }
+        graph.edges.each { graph.newEdge(it.a, it.b) }
     }
 
     @Override
     Node getContent() {
         content
+    }
+
+    @Override
+    G getArgument() {
+        graph
+    }
+
+    @Override
+    def update() {
+        return null
     }
 }

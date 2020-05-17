@@ -2,12 +2,25 @@ package utils.orl
 
 import api.ProjectFiles
 import log.LogFacade
+import math.algorithms.other.KruskallAlgorithm
+import math.graphs.theory.Graph
 
-class OrlDataConvertTools {
+final class OrlDataConvertTools {
 
     private static final def NUMBERS = [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
-    static void main(String[] args) {
+    private static void fillWithEdges() {
+        OrlCaseLoader.CASES.each { entry ->
+            Graph graph = OrlCaseLoader.loadCase(entry.key).b
+            new KruskallAlgorithm(graph).run()
+            entry.value << "${graph.edges.size()}\n"
+            graph.edges.each {
+                entry.value << "${it.a.hashCode()} ${it.b.hashCode()}\n"
+            }
+        }
+    }
+
+    private static void rawToOrl(String[] args) {
         Map<File, File> files = new HashMap<>()
         for (number in NUMBERS) {
             File rawCaseFile = new File(ProjectFiles.ORL_RAW_DIRECTORY, "estein${number}.txt")
