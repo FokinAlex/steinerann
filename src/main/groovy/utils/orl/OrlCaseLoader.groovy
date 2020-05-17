@@ -29,6 +29,10 @@ final class OrlCaseLoader {
         result
     }
 
+    static Set<String> getFlatRawCases() {
+        CASES.keySet()
+    }
+
     static void findCases(File casesDirectory) {
         if (casesDirectory.isDirectory()) {
             Map<String, List<Duo<String, File>>> cases = new LinkedHashMap<>()
@@ -51,7 +55,6 @@ final class OrlCaseLoader {
 
         Graph graph = new Graph(MetricSpace.EUCLIDEAN)
         Graph steinerTree = new Graph(MetricSpace.EUCLIDEAN)
-        Vertex vertex
 
         int count
         String[] values
@@ -74,8 +77,7 @@ final class OrlCaseLoader {
                 values = reader.readLine().trim().split(' ')
                 x = Double.valueOf(values[1])
                 y = Double.valueOf(values[2])
-                vertex = steinerTree.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
-                vertex.setType(VertexTypes.STEINER)
+                steinerTree.newSteinerPoint(MetricSpace.EUCLIDEAN.point(x, y))
             }
             count = Integer.valueOf(reader.readLine())
             for (int ignore = 0; ignore < count; ignore++) {

@@ -38,6 +38,5 @@ final class MainWindowController implements FileMenu, ProjectMenu, AlgorithmsMen
                 menu.items.add(item)
             }
         }
-        this.propertiesVBox.children.add(new ProgressBar())
     }
 }

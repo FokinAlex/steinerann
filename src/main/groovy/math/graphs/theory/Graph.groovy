@@ -1,6 +1,7 @@
 package math.graphs.theory
 
 import identification.Sequence
+import math.graphs.VertexTypes
 import math.metricspaces.MetricSpace
 import math.metricspaces.Point
 import utils.others.Duo
@@ -9,20 +10,31 @@ class Graph {
 
     final MetricSpace metricSpace
     final Topology topology
+    final Set<Vertex> steinerPoints
     final Set<Duo<Vertex, Vertex>> edges
 
     Graph(MetricSpace metricSpace) {
         this.metricSpace = metricSpace
         this.topology = new Topology()
         this.edges = new HashSet<>()
+        this.steinerPoints = new HashSet<>(
+        )
     }
 
-    def newVertex(Point location) {
+    Vertex newVertex(Point location) {
         topology.newVertex(location)
+    }
+
+    Vertex newSteinerPoint(Point location) {
+        Vertex steinerPoint = newVertex(location)
+        steinerPoint.type = VertexTypes.STEINER
+        steinerPoints.add(steinerPoint)
+        steinerPoint
     }
 
     def removeVertex(Vertex vertex) {
         if (topology.removeVertex(vertex)) {
+            steinerPoints.remove(vertex)
             edges.removeAll { it.a == vertex || it.b == vertex }
         }
     }
@@ -44,11 +56,12 @@ class Graph {
     }
 
     double getWeight() {
-        // TODO:
-        // edges.isEmpty() ? 0 : edges.stream()
-        //         .map(AbstractEdge.&getWeight())
-        //         .reduce({a, b -> a + b})
-        //         .get() as double
+        edges.isEmpty() ?
+                0 :
+                edges.stream()
+                        .map { metricSpace.metric(it.a.location, it.b.location) }
+                        .reduce { a, b -> a + b }
+                        .get() as Double
     }
 
     final class Topology {

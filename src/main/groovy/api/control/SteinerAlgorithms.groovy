@@ -1,7 +1,8 @@
 package api.control
 
 import math.algorithms.Algorithm
-import math.algorithms.steiner.SmithLeeLiebmanAlgorithm
+import math.algorithms.steiner.heuristic.GreedyAlgorithm
+import math.algorithms.steiner.heuristic.SmithLeeLiebmanAlgorithm
 import math.graphs.theory.Graph
 
 enum SteinerAlgorithms implements AlgorithmType<Graph> {
@@ -10,6 +11,14 @@ enum SteinerAlgorithms implements AlgorithmType<Graph> {
         @Override
         Algorithm initialize(Graph graph) {
             new SmithLeeLiebmanAlgorithm<Graph>(graph)
+        }
+    },
+
+    GREEDY_ALGORITHM("Жадный алгоритм") {
+
+        @Override
+        Algorithm initialize(Graph graph) {
+            new GreedyAlgorithm<Graph>(graph)
         }
     };
 

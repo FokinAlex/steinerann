@@ -1,15 +1,33 @@
 package math.utils
 
 import log.LogFacade
+import math.graphs.VertexTypes
 import math.graphs.theory.Graph
 import math.graphs.theory.Vertex
 import math.metricspaces.EuclideanPoint
-import math.metricspaces.MetricSpace
 import math.utils.delaunaytriangulator.DelaunayTriangulator
 import math.utils.delaunaytriangulator.Vector2D
 import utils.others.Triple
 
 final class GraphUtils {
+
+    static final Graph cloneGraph(Graph graph) {
+        Graph result = new Graph(graph.metricSpace)
+        graph.topology.vertices.sort { it.hashCode() }.each {
+            if (it.type == VertexTypes.STEINER) {
+                result.newSteinerPoint(it.location)
+            } else {
+                result.newVertex(it.location)
+            }
+        }
+        graph.edges.each { edge ->
+            result.newEdge(
+                    result.topology.vertices.find { it == edge.a },
+                    result.topology.vertices.find { it == edge.b }
+            )
+        }
+        result
+    }
 
     static final List<Triple<Vertex, Vertex, Double>> completeGraphStructure(Graph graph) {
         List<Triple<Vertex, Vertex, Double>> structure = new LinkedList<>()
@@ -28,6 +46,18 @@ final class GraphUtils {
             }
         }
         structure
+    }
+
+    static final void makeComplete(Graph graph) {
+        Set<Vertex> visited = new HashSet<>()
+        graph.topology.vertices.each { vertex ->
+            visited.add(vertex)
+            graph.topology.vertices.each {
+                if (it != vertex && !visited.contains(it)) {
+                    graph.newEdge(vertex, it)
+                }
+            }
+        }
     }
 
     static final boolean isReachable(Vertex start, Vertex goal) {

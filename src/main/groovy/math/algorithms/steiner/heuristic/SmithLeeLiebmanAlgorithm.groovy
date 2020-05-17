@@ -1,4 +1,4 @@
-package math.algorithms.steiner
+package math.algorithms.steiner.heuristic
 
 import math.algorithms.AbstractGraphAlgorithm
 import math.algorithms.other.KruskallAlgorithm
@@ -20,7 +20,6 @@ class SmithLeeLiebmanAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G
     void run() {
         logStep "Started"
 
-        // 1. Build triamgulation ?
         logStep "Triangulation started"
         List<Triple<Vertex, Vertex, Vertex>> triangles = GraphUtils.triangulation(graph)
         logStep "Triangulation finished"
@@ -29,7 +28,6 @@ class SmithLeeLiebmanAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G
             logStep "Have no triangles"
             new KruskallAlgorithm(graph).run()
         } else {
-            // 2. For each triangle find steiner point
             triangles.each {
                 Point steinerPoint = MetricSpaceUtils.of(graph.metricSpace).steinerPointFor(it.a.location, it.b.location, it.c.location)
                 logStep "${steinerPoint} is steiner point for ${it}"
@@ -39,7 +37,6 @@ class SmithLeeLiebmanAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G
                 }
             }
 
-            // 3.
             logStep "Building minimal spanning tree"
             new KruskallAlgorithm(graph).run()
             logStep "Building Steiner minimal tree"

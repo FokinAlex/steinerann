@@ -7,10 +7,6 @@
     <top>
         <MenuBar fx:id="menuBar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="NEVER">
             <menus>
-                <Menu fx:id="gui_FileMenuActions__fileMenu" mnemonicParsing="false" text="File">
-                    <items>
-                    </items>
-                </Menu>
                 <Menu fx:id="projectMenu" mnemonicParsing="false" text="Проект">
                     <items>
                         <!-- <MenuItem fx:id="gui_fxml_ProjectMenu__projectNewGraphPageMenuItem" mnemonicParsing="false" onAction="#newGraphPage" text="Graph Page" /> -->

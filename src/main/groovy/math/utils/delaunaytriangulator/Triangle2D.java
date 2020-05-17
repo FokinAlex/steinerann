@@ -77,7 +77,7 @@ public class Triangle2D {
     }
 
     /**
-     * Test if this triangle is oriented counterclockwise (CCW). Let A, B and C
+     * PerceptronTest if this triangle is oriented counterclockwise (CCW). Let A, B and C
      * be three 2D points. If det &gt; 0, C lies to the left of the directed
      * line AB. Equivalently the triangle ABC is oriented counterclockwise. When
      * det &lt; 0, C lies to the right of the directed line AB, and the triangle
