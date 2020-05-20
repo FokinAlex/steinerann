@@ -1,6 +1,6 @@
 package ann
 
-import ann.models.DistanceAnglePerceptronModel
+import trash.DistanceAnglePerceptronModel
 import math.graphs.VertexTypes
 import math.graphs.theory.Graph
 import math.graphs.theory.Vertex

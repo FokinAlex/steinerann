@@ -1,6 +1,0 @@
-package ann
-
-class AnnFacade {
-
-
-}

@@ -46,13 +46,29 @@ class Graph {
     def newEdge(Vertex vertexA, Vertex vertexB) {
         if (topology.newEdge(vertexA, vertexB)) {
             edges.add(new Duo<Vertex, Vertex>(a: vertexA, b: vertexB))
+        } else {
+            println "Почему-то ребро не добавлено a: ${vertexA} b: ${vertexB}"
         }
     }
 
      def removeEdge(Vertex vertexA, Vertex vertexB) {
          if (topology.removeEdge(vertexA, vertexB)) {
              edges.removeAll { (it.a == vertexA && it.b == vertexB) || (it.a == vertexB && it.b == vertexA) }
+         } else {
+             println "Почему-то ребро не удалено a: ${vertexA} b: ${vertexB}"
          }
+    }
+
+    def clearToRegular() {
+        topology.vertices.each { it.neighbors.clear() }
+        edges.clear()
+        steinerPoints.each { topology.removeVertex(it) }
+        steinerPoints.clear()
+    }
+
+    def clearEdges() {
+        topology.vertices.each { it.neighbors.clear() }
+        edges.clear()
     }
 
     double getWeight() {
@@ -76,12 +92,11 @@ class Graph {
             vertex
         }
 
-        private def newEdge(Vertex vertexA, Vertex vertexB) {
-            vertexA.neighbors.add(vertexB)
-            vertexB.neighbors.add(vertexA)
+        def newEdge(Vertex vertexA, Vertex vertexB) {
+            vertexA.neighbors.add(vertexB) && vertexB.neighbors.add(vertexA)
         }
 
-        private def removeVertex(Vertex vertex) {
+        def removeVertex(Vertex vertex) {
             Iterator<Vertex> neighborsIterator = vertex.neighbors.iterator()
             while (neighborsIterator.hasNext()) {
                 Vertex neighbor = neighborsIterator.next()
@@ -91,9 +106,8 @@ class Graph {
             vertices.remove(vertex)
         }
 
-        private def removeEdge(Vertex vertexA, Vertex vertexB) {
-            vertexA.neighbors.remove(vertexB)
-            vertexB.neighbors.remove(vertexA)
+        def removeEdge(Vertex vertexA, Vertex vertexB) {
+            vertexA.neighbors.remove(vertexB) && vertexB.neighbors.remove(vertexA)
         }
     }
 }

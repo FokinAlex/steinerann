@@ -1,7 +1,6 @@
 package math.algorithms
 
 import log.LogFacade
-import math.algorithms.Algorithm
 import math.graphs.theory.Graph
 
 // TODO: Observable

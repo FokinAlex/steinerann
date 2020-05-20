@@ -1,14 +1,14 @@
 package math.algorithms.steiner.heuristic
 
 import math.algorithms.AbstractGraphAlgorithm
-import math.algorithms.other.KruskallAlgorithm
+import math.graphs.VertexTypes
 import math.graphs.theory.Graph
 import math.graphs.theory.Vertex
 import math.metricspaces.EuclideanPoint
 import math.metricspaces.Point
 import math.utils.GraphUtils
 import math.utils.MetricSpaceUtils
-import utils.others.Duo
+import utils.others.Triple
 
 class GreedyAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G> {
 
@@ -16,20 +16,22 @@ class GreedyAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G> {
     // Different sorts
     private final Sorter sorter
 
-    GreedyAlgorithm(G graph) {
+    GreedyAlgorithm(G graph, Sorter sorter) {
         super(graph, "Greedy Algorithm")
-        sorter = Sorter.BY_AVERAGE
+        this.sorter = sorter
     }
 
     @Override
     void run() {
         logStep "Started"
+        graph.clearToRegular()
 
         logStep "Sorting started"
         List<Vertex> sortedVertices = sorter.sort(graph)
+        logStep "Sorted"
 
         if (sortedVertices.size() < 3) {
-            new KruskallAlgorithm(graph).run()
+            GraphUtils.minimalSpanningTree(graph)
         } else {
             Graph currentTree
             Graph subCurrentTree
@@ -47,10 +49,9 @@ class GreedyAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G> {
 
             for (int i = 3; i < sortedVertices.size(); i++) {
                 bestTree = new Graph(graph.metricSpace) { @Override double getWeight() { Double.MAX_VALUE } }
-                Iterator edgesIterator = currentTree.edges.iterator()
-                while (edgesIterator.hasNext()) {
-                    Duo<Vertex, Vertex> edge = edgesIterator.next()
+                currentTree.edges.each { edge ->
                     subCurrentTree = GraphUtils.cloneGraph(currentTree)
+                    subCurrentTree.removeEdge(edge.a, edge.b)
                     a = subCurrentTree.topology.vertices.find { it == edge.a }
                     b = subCurrentTree.topology.vertices.find { it == edge.b }
                     c = subCurrentTree.newVertex(sortedVertices[i].location)
@@ -62,7 +63,19 @@ class GreedyAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G> {
                 currentTree = GraphUtils.cloneGraph(bestTree)
             }
             currentTree.steinerPoints.each { graph.newSteinerPoint(it.location) }
-            new KruskallAlgorithm(graph).run()
+            GraphUtils.minimalSpanningTree(graph)
+            boolean hasExcess = true
+            while (hasExcess) {
+                List<Vertex> excessVertices = new LinkedList<>()
+                graph.topology.vertices.each {
+                    if (it.type == VertexTypes.STEINER && it.neighbors.size() != 3) {
+                        excessVertices.add(it)
+                    }
+                }
+                hasExcess = !excessVertices.isEmpty()
+                graph.removeVertices(excessVertices.toArray() as Vertex[])
+                GraphUtils.minimalSpanningTree(graph)
+            }
         }
 
         completed()
@@ -85,6 +98,26 @@ class GreedyAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G> {
                 Point averagePoint = graph.metricSpace.point(averageX, averageY)
 
                 graph.topology.vertices.collect().sort { graph.metricSpace.metric(it.location, averagePoint) }
+            }
+        },
+
+        BY_BREADTH_FIRST {
+
+            @Override
+            List<Vertex> sort(Graph graph) {
+                List<Vertex> result = new LinkedList<>()
+                List<Triple<Vertex, Vertex, Double>> completeGraphStructure = GraphUtils.completeGraphStructure(graph)
+                        .sort{ it.c }
+
+                completeGraphStructure.each {
+                    if (!(it.a in result)) {
+                        result.add(it.a)
+                    }
+                    if (!(it.b in result)) {
+                        result.add(it.b)
+                    }
+                }
+                result
             }
         };
 

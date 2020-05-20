@@ -1,4 +1,4 @@
-package math.algorithms.steiner.ann
+package trash
 
 import math.algorithms.AbstractGraphAlgorithm
 import math.graphs.theory.Graph

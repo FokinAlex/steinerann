@@ -101,6 +101,16 @@ final class GraphUtils {
             )}
             .collect { it }
     }
+
+    static void minimalSpanningTree(Graph graph) {
+        List<Triple<Vertex, Vertex, Double>> completeGraphStructure = GraphUtils.completeGraphStructure(graph)
+        completeGraphStructure.sort { it.c }
+        completeGraphStructure.each {
+            if (!GraphUtils.isReachable(it.a, it.b)) {
+                graph.newEdge(it.a, it.b)
+            }
+        }
+    }
 }
 
 /*

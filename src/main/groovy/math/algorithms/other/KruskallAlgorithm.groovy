@@ -10,12 +10,12 @@ final class KruskallAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G>
 
     KruskallAlgorithm(G graph) {
         super(graph, "Kruskall Algorithm")
-        // TODO: remove edges?
     }
 
     @Override
     void run() {
         logStep "Started"
+        graph.clearToRegular()
 
         List<Triple<Vertex, Vertex, Double>> completeGraphStructure = GraphUtils.completeGraphStructure(graph)
         completeGraphStructure.sort { it.c }

@@ -19,6 +19,7 @@ class SmithLeeLiebmanAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G
     @Override
     void run() {
         logStep "Started"
+        graph.clearToRegular()
 
         logStep "Triangulation started"
         List<Triple<Vertex, Vertex, Vertex>> triangles = GraphUtils.triangulation(graph)
@@ -26,19 +27,19 @@ class SmithLeeLiebmanAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G
 
         if (null == triangles || triangles.size() < 1) {
             logStep "Have no triangles"
-            new KruskallAlgorithm(graph).run()
+            GraphUtils.minimalSpanningTree(graph)
         } else {
             triangles.each {
                 Point steinerPoint = MetricSpaceUtils.of(graph.metricSpace).steinerPointFor(it.a.location, it.b.location, it.c.location)
                 logStep "${steinerPoint} is steiner point for ${it}"
                 if (steinerPoint != it.a.location && steinerPoint != it.b.location && steinerPoint != it.c.location) {
-                    graph.newVertex(steinerPoint).type = VertexTypes.STEINER
+                    graph.newSteinerPoint(steinerPoint)
                     logStep "New vertex added"
                 }
             }
 
             logStep "Building minimal spanning tree"
-            new KruskallAlgorithm(graph).run()
+            GraphUtils.minimalSpanningTree(graph)
             logStep "Building Steiner minimal tree"
             boolean hasExcess = true
             while (hasExcess) {
@@ -46,7 +47,7 @@ class SmithLeeLiebmanAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G
 
                 logStep "Finding all excess vertices"
                 graph.topology.vertices.each {
-                    if (it.type == VertexTypes.STEINER && (it.neighbors.size() < 3 || it.neighbors.size() > 4)) {
+                    if (it.type == VertexTypes.STEINER && it.neighbors.size() != 3) {
                         logStep "${it} finded"
                         excessVertices.add(it)
                     }
@@ -58,7 +59,7 @@ class SmithLeeLiebmanAlgorithm<G extends Graph> extends AbstractGraphAlgorithm<G
                 graph.removeVertices(excessVertices.toArray() as Vertex[])
 
                 logStep "Building minimal spanning tree"
-                new KruskallAlgorithm(graph).run()
+                GraphUtils.minimalSpanningTree(graph)
             }
 
             logStep "Optimazing locations of Steiner points"
