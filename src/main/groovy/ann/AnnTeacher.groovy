@@ -126,7 +126,7 @@ final class AnnTeacher {
         rightSolution
     }
 
-    private static final Duo<Graph, Graph> getRandomCase() {
+    static final Duo<Graph, Graph> getRandomCase() {
         OrlCaseLoader.loadCase(ORL_CASES[Math.random() * ORL_CASES.size() as int])
     }
 }

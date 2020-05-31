@@ -20,7 +20,7 @@ enum LogFacade {
     }
 
     def call(String message) {
-        OutPrintStreamLogger.call("${prefix}${message}")
+        //OutPrintStreamLogger.call("${prefix}${message}")
     }
 
     def call(Exception exception) {

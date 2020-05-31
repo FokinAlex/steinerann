@@ -8,11 +8,17 @@ import javafx.scene.control.MenuItem
 trait ProjectMenu {
 
     @FXML private Menu     projectMenu
-    @FXML private MenuItem projectNewGraphPageMenuItem
+    @FXML private MenuItem projectGenerateGraphPageMenuItem
     @FXML private Menu     projectNewOrlCaseMenu
 
     @FXML
-    def newGraphPage() {
-        Context.PROJECT_CONTROLLER.newGraphPage("New Page")
+    def generateGraphPage() {
+
+        // TODO: get name & number
+        int number = 10
+        String name = "${Math.random() * 10_000 % 10_000 as int}.${number}"
+
+
+        Context.PROJECT_CONTROLLER.generateGraphPage(name, number)
     }
 }

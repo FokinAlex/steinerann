@@ -9,7 +9,7 @@
             <menus>
                 <Menu fx:id="projectMenu" mnemonicParsing="false" text="Проект">
                     <items>
-                        <!-- <MenuItem fx:id="gui_fxml_ProjectMenu__projectNewGraphPageMenuItem" mnemonicParsing="false" onAction="#newGraphPage" text="Graph Page" /> -->
+                        <MenuItem fx:id="gui_fxml_ProjectMenu__projectGenerateGraphPageMenuItem" mnemonicParsing="false" onAction="#generateGraphPage" text="Сгенерировать" />
                         <Menu mnemonicParsing="false" text="Открыть">
                             <items>
                                 <Menu fx:id="gui_fxml_ProjectMenu__projectNewOrlCaseMenu" mnemonicParsing="false" text="Библиотека OR-Library" />
@@ -24,6 +24,7 @@
 
     <center>
         <BorderPane fx:id="mainPane" prefHeight="500.0" prefWidth="700.0">
+            <!--
             <right>
                 <AnchorPane style="-fx-border-color: #c0c0c0;">
                     <children>
@@ -31,6 +32,7 @@
                     </children>
                 </AnchorPane>
             </right>
+            -->
         </BorderPane>
     </center>
 </BorderPane>

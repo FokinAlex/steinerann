@@ -1,9 +1,12 @@
 package gui.fxml.components.euclidean
 
 import api.Parameters
+import javafx.scene.Node
 import javafx.scene.layout.AnchorPane
 import math.graphs.theory.Vertex
 import math.metricspaces.EuclideanPoint
+
+import java.awt.TextField
 
 class EuclideanGraphPane extends AnchorPane {
 

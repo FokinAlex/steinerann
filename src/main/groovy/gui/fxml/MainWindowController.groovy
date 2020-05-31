@@ -38,5 +38,6 @@ final class MainWindowController implements FileMenu, ProjectMenu, AlgorithmsMen
                 menu.items.add(item)
             }
         }
+        this.gui_fxml_AlgorithmsMenu__algorithmsMenu.disableProperty().set(true)
     }
 }

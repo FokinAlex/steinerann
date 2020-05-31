@@ -14,7 +14,7 @@ enum ModelFacade {
                 int inputSize = Integer.valueOf(reader.readLine())
                 int hiddenSize = Integer.valueOf(reader.readLine())
                 model = new MstShiftModel(resource.name, shift, inputSize, hiddenSize)
-                for (int hidden = 0; hidden < hiddenSize; hidden++) {
+                for (int hidden = 0; hidden < hiddenSize; hidden++) { // TODO: почему?
                     model.hiddenLayer[hidden] = Double.valueOf(reader.readLine())
                 }
                 for (int input = 0; input < inputSize; input++) {

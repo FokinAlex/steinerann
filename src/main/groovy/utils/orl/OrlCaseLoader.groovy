@@ -1,16 +1,15 @@
 package utils.orl
 
 import api.ProjectFiles
-import math.graphs.VertexTypes
 import math.graphs.theory.Graph
-import math.graphs.theory.Vertex
 import math.metricspaces.MetricSpace
 import utils.others.Duo
+import utils.others.Quad
 
 final class OrlCaseLoader {
 
     private static final Map<Integer, List<Duo<String, File>>> GROUPED_CASES = new LinkedHashMap<>()
-    private static final Map<String, File> CASES = new HashMap<>()
+    static final Map<String, File> CASES = new HashMap<>()
 
     static {
         findCases(new File(ProjectFiles.ORL_CASES_DIRECTORY))
@@ -91,5 +90,55 @@ final class OrlCaseLoader {
             }
         }
         new Duo<>(a: graph, b: steinerTree)
+    }
+
+    static Quad<Graph, Graph, Double, Double> loadTask(String caseName) {
+        File resource = CASES.get(caseName)
+
+        Graph graph = new Graph(MetricSpace.EUCLIDEAN)
+        Graph steinerTree = new Graph(MetricSpace.EUCLIDEAN)
+        double minimalSpanningTree
+        double minimalSteinerTree
+
+        int count
+        String[] values
+        def x
+        def y
+        resource.withReader { reader ->
+            // TODO: Save it
+            minimalSpanningTree = Double.valueOf(reader.readLine())
+            minimalSteinerTree = Double.valueOf(reader.readLine())
+            count = Integer.valueOf(reader.readLine())
+            for (int ignore = 0; ignore < count; ignore++) {
+                values = reader.readLine().split(' ')
+                x = Double.valueOf(values[1])
+                y = Double.valueOf(values[2])
+                steinerTree.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
+                graph.newVertex(MetricSpace.EUCLIDEAN.point(x, y))
+            }
+            count = Integer.valueOf(reader.readLine())
+            for (int ignore = 0; ignore < count; ignore++) {
+                values = reader.readLine().trim().split(' ')
+                x = Double.valueOf(values[1])
+                y = Double.valueOf(values[2])
+                steinerTree.newSteinerPoint(MetricSpace.EUCLIDEAN.point(x, y))
+            }
+            count = Integer.valueOf(reader.readLine())
+            for (int ignore = 0; ignore < count; ignore++) {
+                values = reader.readLine().trim().split(' ')
+                x = Integer.valueOf(values[0])
+                y = Integer.valueOf(values[1])
+                steinerTree.newEdge(
+                        steinerTree.topology.vertices.find { it.hashCode() == x },
+                        steinerTree.topology.vertices.find { it.hashCode() == y }
+                )
+            }
+        }
+        new Quad<Graph, Graph, Double, Double>(
+                a: graph,
+                b: steinerTree,
+                c: minimalSpanningTree,
+                d: minimalSteinerTree
+        )
     }
 }

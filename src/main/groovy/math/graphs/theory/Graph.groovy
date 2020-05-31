@@ -1,6 +1,7 @@
 package math.graphs.theory
 
 import identification.Sequence
+import log.LogFacade
 import math.graphs.VertexTypes
 import math.metricspaces.MetricSpace
 import math.metricspaces.Point
@@ -47,7 +48,7 @@ class Graph {
         if (topology.newEdge(vertexA, vertexB)) {
             edges.add(new Duo<Vertex, Vertex>(a: vertexA, b: vertexB))
         } else {
-            println "Почему-то ребро не добавлено a: ${vertexA} b: ${vertexB}"
+            LogFacade.WARN "Почему-то ребро не добавлено a: ${vertexA} b: ${vertexB}"
         }
     }
 
@@ -55,7 +56,7 @@ class Graph {
          if (topology.removeEdge(vertexA, vertexB)) {
              edges.removeAll { (it.a == vertexA && it.b == vertexB) || (it.a == vertexB && it.b == vertexA) }
          } else {
-             println "Почему-то ребро не удалено a: ${vertexA} b: ${vertexB}"
+             LogFacade.WARN "Почему-то ребро не удалено a: ${vertexA} b: ${vertexB}"
          }
     }
 
