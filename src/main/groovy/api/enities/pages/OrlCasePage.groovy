@@ -6,31 +6,38 @@ import gui.fxml.components.euclidean.EuclideanGraphPane
 import javafx.geometry.Pos
 import javafx.scene.Node
 import javafx.scene.control.TextField
+import math.algorithms.other.KruskallAlgorithm
 import math.graphs.theory.Graph
 import math.graphs.theory.Vertex
+import math.utils.GraphUtils
 
 class OrlCasePage<G extends Graph> extends Page implements AlgorithmFriendlyPage<G>  {
 
     final G graph
+    final G minimalSpanningTree
     final G steinerTree
     final PageContentPane content
     final EuclideanGraphPane graphPane
+    final EuclideanGraphPane minimalSpanningTreePane
     final EuclideanGraphPane steinerTreePane
-    final TextField graphWeightFileld
-    final TextField steinerTreeWeightFileld
-
-
+    final TextField graphWeightField
+    final TextField minimalSpanningTreeWeightField
+    final TextField steinerTreeWeightField
 
     OrlCasePage(String name, G graph, G steinerTree) {
         super(name)
         this.graph = graph
+        this.minimalSpanningTree = GraphUtils.cloneGraph(graph)
         this.steinerTree = steinerTree
+        this.minimalSpanningTreePane = new EuclideanGraphPane()
         this.graphPane = new EuclideanGraphPane()
         this.steinerTreePane = new EuclideanGraphPane()
-        this.graphWeightFileld = new TextField("0.0")
-        this.steinerTreeWeightFileld = new TextField(steinerTree.weight as String)
+        this.minimalSpanningTreeWeightField = new TextField()
+        this.graphWeightField = new TextField()
+        this.steinerTreeWeightField = new TextField(steinerTree.weight as String)
         this.content = initContent()
 
+        refillMinimalSpanningTreePane()
         refillGraphPane()
         refillSteinerTreePane()
     }
@@ -42,35 +49,65 @@ class OrlCasePage<G extends Graph> extends Page implements AlgorithmFriendlyPage
         )
 
         _content.addNode(
-                graphPane,
+                minimalSpanningTreePane,
                 Parameters.WORK_GROUND_BORDER_SIZE,
                 Parameters.WORK_GROUND_BORDER_SIZE
         )
 
         _content.addNode(
-                steinerTreePane,
+                graphPane,
                 Parameters.WORK_GROUND_BORDERED_SIDE_SIZE,
                 Parameters.WORK_GROUND_BORDER_SIZE
         )
 
-        graphWeightFileld.setPrefSize(Parameters.WORK_GROUND_SIDE_SIZE, 20)
-        graphWeightFileld.disableProperty().set(true)
-        graphWeightFileld.alignmentProperty().set(Pos.BASELINE_CENTER)
-        _content.addNode(graphWeightFileld, Parameters.WORK_GROUND_BORDER_SIZE, Parameters.WORK_GROUND_BORDERED_SIDE_SIZE)
+        _content.addNode(
+                steinerTreePane,
+                Parameters.WORK_GROUND_BORDERED_SIDE_SIZE * 2 - Parameters.WORK_GROUND_BORDER_SIZE,
+                Parameters.WORK_GROUND_BORDER_SIZE
+        )
 
-        steinerTreeWeightFileld.setPrefSize(Parameters.WORK_GROUND_SIDE_SIZE, 20)
-        steinerTreeWeightFileld.disableProperty().set(true)
-        steinerTreeWeightFileld.alignmentProperty().set(Pos.BASELINE_CENTER)
-        _content.addNode(steinerTreeWeightFileld, Parameters.WORK_GROUND_BORDERED_SIDE_SIZE, Parameters.WORK_GROUND_BORDERED_SIDE_SIZE)
+        minimalSpanningTreeWeightField.setPrefSize(Parameters.WORK_GROUND_SIDE_SIZE, 20)
+        minimalSpanningTreeWeightField.disableProperty().set(true)
+        minimalSpanningTreeWeightField.alignmentProperty().set(Pos.BASELINE_CENTER)
+        _content.addNode(
+                minimalSpanningTreeWeightField,
+                Parameters.WORK_GROUND_BORDER_SIZE,
+                Parameters.WORK_GROUND_BORDERED_SIDE_SIZE
+        )
+
+        graphWeightField.setPrefSize(Parameters.WORK_GROUND_SIDE_SIZE, 20)
+        graphWeightField.disableProperty().set(true)
+        graphWeightField.alignmentProperty().set(Pos.BASELINE_CENTER)
+        _content.addNode(
+                graphWeightField,
+                Parameters.WORK_GROUND_BORDERED_SIDE_SIZE,
+                Parameters.WORK_GROUND_BORDERED_SIDE_SIZE
+        )
+
+        steinerTreeWeightField.setPrefSize(Parameters.WORK_GROUND_SIDE_SIZE, 20)
+        steinerTreeWeightField.disableProperty().set(true)
+        steinerTreeWeightField.alignmentProperty().set(Pos.BASELINE_CENTER)
+        _content.addNode(
+                steinerTreeWeightField,
+                Parameters.WORK_GROUND_BORDERED_SIDE_SIZE * 2 - Parameters.WORK_GROUND_BORDER_SIZE,
+                Parameters.WORK_GROUND_BORDERED_SIDE_SIZE
+        )
 
         _content
+    }
+
+    def refillMinimalSpanningTreePane() {
+        new KruskallAlgorithm(minimalSpanningTree).run()
+        minimalSpanningTree.topology.vertices.each { minimalSpanningTreePane.newVertex(it as Vertex) }
+        minimalSpanningTree.edges.each { minimalSpanningTreePane.newEdge(it.a, it.b) }
+        minimalSpanningTreeWeightField.setText(minimalSpanningTree.weight as String)
     }
 
     def refillGraphPane() {
         graphPane.clear()
         graph.topology.vertices.each { graphPane.newVertex(it as Vertex) }
         graph.edges.each { graphPane.newEdge(it.a, it.b) }
-        graphWeightFileld.setText(graph.weight as String)
+        graphWeightField.setText(graph.weight as String)
     }
 
     def refillSteinerTreePane() {

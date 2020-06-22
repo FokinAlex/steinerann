@@ -1,6 +1,7 @@
 plugins {
     id 'groovy'
     id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'application'
 }
 
 group 'alexfokin.steinerann'
@@ -13,10 +14,27 @@ repositories {
 }
 
 javafx {
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    modules = [
+        'javafx.controls',
+        'javafx.fxml',
+    ]
+}
+
+def currentOS = org.gradle.internal.os.OperatingSystem.current()
+def platform
+if (currentOS.isWindows()) {
+    platform = 'win'
+} else if (currentOS.isLinux()) {
+    platform = 'linux'
+} else if (currentOS.isMacOsX()) {
+    platform = 'mac'
 }
 
 dependencies {
+    compile "org.openjfx:javafx-base:11:${platform}"
+    compile "org.openjfx:javafx-graphics:11:${platform}"
+    compile "org.openjfx:javafx-controls:11:${platform}"
+    compile "org.openjfx:javafx-fxml:11:${platform}"
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     compile 'com.googlecode.json-simple:json-simple:1.1.1'
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -26,6 +44,24 @@ wrapper {
     gradleVersion = '5.2.1'
 }
 
-task logDirInit {
+
+task(runMain, dependsOn: 'classes', type: JavaExec) {
+    println "task run"
+    println "Init logs"
     new File("logs").mkdir()
+    println "JVM args"
+//    applicationDefaultJvmArgs = [
+//        '--add-opens=javafx.graphics/com.sun.javafx.application=ALL-UNNAMED',
+//    ]
+//    jvmArgs = [
+//        '--add-opens=javafx.graphics/com.sun.javafx.application=ALL-UNNAMED',
+//    ]
+    println "Start FXApp"
 }
+
+mainClassName = "gui.FXApp"
+
+jar {
+    manifest.attributes("Main-Class": mainClassName)
+}
+

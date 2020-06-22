@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.fxml.MainWindowController">
+    <top>
+        <MenuBar fx:id="menuBar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="NEVER">
+            <menus>
+                <Menu fx:id="projectMenu" mnemonicParsing="false" text="Проект">
+                    <items>
+                        <MenuItem fx:id="gui_fxml_ProjectMenu__projectGenerateGraphPageMenuItem" mnemonicParsing="false" onAction="#generateGraphPage" text="Сгенерировать" />
+                        <Menu mnemonicParsing="false" text="Открыть">
+                            <items>
+                                <Menu fx:id="gui_fxml_ProjectMenu__projectNewOrlCaseMenu" mnemonicParsing="false" text="Библиотека OR-Library" />
+                            </items>
+                        </Menu>
+                    </items>
+                </Menu>
+                <Menu fx:id="gui_fxml_AlgorithmsMenu__algorithmsMenu" mnemonicParsing="false" text="Алгоритмы" />
+            </menus>
+        </MenuBar>
+    </top>
+
+    <center>
+        <BorderPane fx:id="mainPane" prefHeight="500.0" prefWidth="700.0">
+            <!--
+            <right>
+                <AnchorPane style="-fx-border-color: #c0c0c0;">
+                    <children>
+                        <VBox fx:id="gui_fxml_PropertiesVBox__propertiesVBox" minWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                    </children>
+                </AnchorPane>
+            </right>
+            -->
+        </BorderPane>
+    </center>
+</BorderPane>

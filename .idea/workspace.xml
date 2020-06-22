@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f6630caa-52dc-4f05-a927-5fbb15a2f8f0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/api/Parameters.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/api/Parameters.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/api/enities/pages/GraphPage.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/api/enities/pages/GraphPage.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/api/enities/pages/OrlCasePage.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/api/enities/pages/OrlCasePage.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/gui/fxml/ProjectMenu.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/gui/fxml/ProjectMenu.groovy" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/core">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="steinerann" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="steinerann" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="steinerann" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="steinerann" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1Y2Nnkg2Db7uzb3ofdvtkHs4Fc5" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.43333334" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ann" />
+      <recent name="ann.models" />
+      <recent name="math.metricspaces" />
+      <recent name="utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/ann/models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/ann/models" />
+      <recent name="$PROJECT_DIR$/src/main/resources/ann" />
+      <recent name="$PROJECT_DIR$/src/main/resources/orl/cases/100" />
+      <recent name="$PROJECT_DIR$/src/main/resources/orl/cases/90" />
+      <recent name="$PROJECT_DIR$/src/main/resources/orl/cases/80" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle run" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.steinerann [jar]">
+    <configuration name="FXApp" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.FXApp" />
+      <module name="steinerann.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="steinerann [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="steinerann [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="steinerann [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ComputationalExperiment" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
+      <module name="steinerann.main" />
+      <setting name="path" value="file://$PROJECT_DIR$/src/main/groovy/test/ComputationalExperiment.groovy" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GenerateMstShiftModel" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
+      <module name="steinerann.main" />
+      <setting name="path" value="file://$PROJECT_DIR$/src/main/groovy/test/GenerateMstShiftModel.groovy" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.FXApp" />
+      <item itemvalue="Groovy.GenerateMstShiftModel" />
+      <item itemvalue="Groovy.ComputationalExperiment" />
+      <item itemvalue="Gradle.steinerann [run]" />
+      <item itemvalue="Gradle.steinerann [jar]" />
+      <item itemvalue="Gradle.steinerann [clean]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.steinerann [jar]" />
+        <item itemvalue="Gradle.steinerann [clean]" />
+        <item itemvalue="Gradle.steinerann [run]" />
+        <item itemvalue="Groovy.ComputationalExperiment" />
+        <item itemvalue="Groovy.GenerateMstShiftModel" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6630caa-52dc-4f05-a927-5fbb15a2f8f0" name="Default Changelist" comment="" />
+      <created>1582136898150</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582136898150</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="dev-1: Initialized MetricSpace" />
+    <MESSAGE value="dev-3: graphs.theory-package were initialized" />
+    <MESSAGE value="dev-2: identification-package were initialized" />
+    <MESSAGE value="dev-4: changes were moved to src/main" />
+    <MESSAGE value="dev-1: MetricSpace &amp; MathUtils were initialized" />
+    <MESSAGE value="dev-5: log utils were initilized" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="278" y="58" width="800" height="677" key="#Auto_Import" timestamp="1587060078155">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="278" y="58" width="800" height="677" key="#Auto_Import/0.27.1366.741@0.27.1366.741" timestamp="1587060078155" />
+    <state x="259" y="58" width="800" height="677" key="#Inspections" timestamp="1587233641145">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="259" y="58" key="#Inspections/0.27.1366.741@0.27.1366.741" timestamp="1587233641145" />
+    <state x="307" y="58" width="800" height="677" key="#Inspections/59.27.1307.741@59.27.1307.741" timestamp="1585850360639" />
+    <state x="283" y="58" key="#Project_Structure" timestamp="1585498714802">
+      <screen x="59" y="27" width="1307" height="741" />
+    </state>
+    <state x="283" y="58" key="#Project_Structure/59.27.1307.741@59.27.1307.741" timestamp="1585498714802" />
+    <state x="198" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592843352418">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="198" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1592843352418" />
+    <state x="170" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/59.27.1307.741@59.27.1307.741" timestamp="1586004146581" />
+    <state x="375" y="201" width="669" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590082970820">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="375" y="201" width="669" height="390" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1366.741@0.27.1366.741" timestamp="1590082970820" />
+    <state x="482" y="108" width="374" height="577" key="#com.intellij.ide.util.MemberChooser" timestamp="1589993227068">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="482" y="108" width="374" height="577" key="#com.intellij.ide.util.MemberChooser/0.27.1366.741@0.27.1366.741" timestamp="1589993227068" />
+    <state x="520" y="108" width="374" height="577" key="#com.intellij.ide.util.MemberChooser/59.27.1307.741@59.27.1307.741" timestamp="1585990918672" />
+    <state x="445" y="180" width="524" height="444" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1586090095367">
+      <screen x="59" y="27" width="1307" height="741" />
+    </state>
+    <state x="445" y="180" width="524" height="444" key="#com.intellij.ide.util.PackageChooserDialog/59.27.1307.741@59.27.1307.741" timestamp="1586090095367" />
+    <state x="424" y="282" width="546" height="239" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1589993070233">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="424" y="282" width="546" height="239" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.1366.741@0.27.1366.741" timestamp="1589993070233" />
+    <state x="465" y="282" width="494" height="239" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/59.27.1307.741@59.27.1307.741" timestamp="1586090098210" />
+    <state x="254" y="27" width="839" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1589991925653">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="254" y="27" width="839" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1366.741@0.27.1366.741" timestamp="1589991925653" />
+    <state x="466" y="154" width="735" height="484" key="FileChooserDialogImpl" timestamp="1592840667380">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="466" y="154" width="735" height="484" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1592840667380" />
+    <state x="532" y="302" key="GitRewordDialog" timestamp="1584555278902">
+      <screen x="59" y="27" width="1307" height="741" />
+    </state>
+    <state x="532" y="302" key="GitRewordDialog/59.27.1307.741@59.27.1307.741" timestamp="1584555278902" />
+    <state width="1320" height="137" key="GridCell.Tab.0.bottom" timestamp="1592843993974">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="137" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1592843993974" />
+    <state width="1320" height="246" key="GridCell.Tab.0.bottom/0.27.2646.741@0.27.2646.741" timestamp="1589982344142" />
+    <state width="1261" height="247" key="GridCell.Tab.0.bottom/59.27.1307.741@59.27.1307.741" timestamp="1586283257512" />
+    <state width="1320" height="137" key="GridCell.Tab.0.center" timestamp="1592843993971">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="137" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1592843993971" />
+    <state width="1320" height="246" key="GridCell.Tab.0.center/0.27.2646.741@0.27.2646.741" timestamp="1589982344141" />
+    <state width="1261" height="247" key="GridCell.Tab.0.center/59.27.1307.741@59.27.1307.741" timestamp="1586283257509" />
+    <state width="1320" height="137" key="GridCell.Tab.0.left" timestamp="1592843993969">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="137" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1592843993969" />
+    <state width="1320" height="246" key="GridCell.Tab.0.left/0.27.2646.741@0.27.2646.741" timestamp="1589982344140" />
+    <state width="1261" height="247" key="GridCell.Tab.0.left/59.27.1307.741@59.27.1307.741" timestamp="1586283257507" />
+    <state width="1320" height="137" key="GridCell.Tab.0.right" timestamp="1592843993973">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="137" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1592843993973" />
+    <state width="1320" height="246" key="GridCell.Tab.0.right/0.27.2646.741@0.27.2646.741" timestamp="1589982344141" />
+    <state width="1261" height="247" key="GridCell.Tab.0.right/59.27.1307.741@59.27.1307.741" timestamp="1586283257511" />
+    <state width="1320" height="256" key="GridCell.Tab.1.bottom" timestamp="1590956141547">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="256" key="GridCell.Tab.1.bottom/0.27.1366.741@0.27.1366.741" timestamp="1590956141547" />
+    <state width="1261" height="321" key="GridCell.Tab.1.bottom/59.27.1307.741@59.27.1307.741" timestamp="1586278365288" />
+    <state width="1320" height="256" key="GridCell.Tab.1.center" timestamp="1590956141545">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="256" key="GridCell.Tab.1.center/0.27.1366.741@0.27.1366.741" timestamp="1590956141545" />
+    <state width="1261" height="321" key="GridCell.Tab.1.center/59.27.1307.741@59.27.1307.741" timestamp="1586278365286" />
+    <state width="1320" height="256" key="GridCell.Tab.1.left" timestamp="1590956141544">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="256" key="GridCell.Tab.1.left/0.27.1366.741@0.27.1366.741" timestamp="1590956141544" />
+    <state width="1261" height="321" key="GridCell.Tab.1.left/59.27.1307.741@59.27.1307.741" timestamp="1586278365286" />
+    <state width="1320" height="256" key="GridCell.Tab.1.right" timestamp="1590956141546">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="256" key="GridCell.Tab.1.right/0.27.1366.741@0.27.1366.741" timestamp="1590956141546" />
+    <state width="1261" height="321" key="GridCell.Tab.1.right/59.27.1307.741@59.27.1307.741" timestamp="1586278365287" />
+    <state x="463" y="58" width="489" height="677" key="RollbackChangesDialog" timestamp="1586004131982">
+      <screen x="59" y="27" width="1307" height="741" />
+    </state>
+    <state x="463" y="58" width="489" height="677" key="RollbackChangesDialog/59.27.1307.741@59.27.1307.741" timestamp="1586004131982" />
+    <state x="166" y="27" width="1024" height="741" key="SettingsEditor" timestamp="1592843264453">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="166" y="27" width="1024" height="741" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1592843264453" />
+    <state width="683" height="371" key="XDebugger.FullValuePopup" timestamp="1589918121631">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="683" height="371" key="XDebugger.FullValuePopup/0.27.1366.741@0.27.1366.741" timestamp="1589918121631" />
+    <state width="653" height="371" key="XDebugger.FullValuePopup/59.27.1307.741@59.27.1307.741" timestamp="1586089950569" />
+    <state x="350" y="293" width="646" height="209" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1592838143185">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="350" y="293" width="646" height="209" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.27.1366.741@0.27.1366.741" timestamp="1592838143185" />
+    <state x="216" y="84" width="923" height="624" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1587231207194">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="216" y="84" width="923" height="624" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.27.1366.741@0.27.1366.741" timestamp="1587231207194" />
+    <state x="274" y="135" width="710" height="633" key="find.popup" timestamp="1590952711383">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="274" y="135" width="710" height="633" key="find.popup/0.27.1366.741@0.27.1366.741" timestamp="1590952711383" />
+    <state x="442" y="189" width="471" height="415" key="git4idea.merge.GitMergeDialog" timestamp="1589721897192">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="442" y="189" width="471" height="415" key="git4idea.merge.GitMergeDialog/0.27.1366.741@0.27.1366.741" timestamp="1589721897192" />
+    <state width="483" height="291" key="javadoc.popup.new" timestamp="1590227561847">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="483" height="291" key="javadoc.popup.new/0.27.1366.741@0.27.1366.741" timestamp="1590227561847" />
+    <state x="331" y="175" width="703" height="677" key="run.anything.popup" timestamp="1592840406108">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="331" y="175" width="703" height="677" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1592840406108" />
+    <state x="376" y="175" width="672" height="677" key="run.anything.popup/59.27.1307.741@59.27.1307.741" timestamp="1586279801025" />
+    <state x="330" y="89" width="703" height="160" key="search.everywhere.popup" timestamp="1590076313401">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="330" y="89" width="703" height="160" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1590076313401" />
+    <state x="375" y="89" width="672" height="160" key="search.everywhere.popup/59.27.1307.741@59.27.1307.741" timestamp="1586083509833" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/math/graphs/theory/Graph.groovy</url>
+          <line>58</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/math/graphs/theory/Graph.groovy</url>
+          <line>56</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/api/control/AlgorithmMonitor.groovy</url>
+          <line>24</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/api/control/AlgorithmMonitor.groovy</url>
+          <line>25</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/api/control/AlgorithmMonitor.groovy</url>
+          <line>27</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/groovy/api/control/AlgorithmMonitor.groovy</url>
+          <line>38</line>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Remote">
+        <watch expression="page.getArgument()" language="Groovy" />
+      </configuration>
+      <configuration name="GroovyScriptRunConfiguration">
+        <watch expression="outputLayer[output] " language="Groovy" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
